@@ -10,12 +10,12 @@ fun getVersionNumber(): Int {
 const val dexPath = "dexguard"
 
 object Versions {
-    const val kotlin = "1.4.30"
+    const val kotlin = "1.5.31"
     val versionCode = getVersionNumber()
     const val versionName = "1.1.1"
     const val coroutines = "1.5.2-native-mt"
     const val serialization = "1.0.1"
-    const val ktor = "1.5.1"
+    const val ktor = "1.6.4"
     const val sqldelight = "1.5.2"
     const val arrow = "1.0.0"
 }
@@ -99,6 +99,10 @@ object Dependencies {
 
                 object Android {
                     const val ktorClientCore = "io.ktor:ktor-client-android:${Versions.ktor}"
+                }
+
+                object Native {
+                    const val ktorClientCore = "io.ktor:ktor-client-ios:${Versions.ktor}"
                 }
             }
         }

@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
     spec.license                  = ''
     spec.summary                  = 'Network module'
 
-    spec.vendored_frameworks      = "build/cocoapods/framework/network.framework"
+    spec.vendored_frameworks      = "build/cocoapods/framework/remote.framework"
     spec.libraries                = "c++"
     spec.module_name              = "#{spec.name}_umbrella"
 

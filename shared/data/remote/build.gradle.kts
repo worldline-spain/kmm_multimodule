@@ -25,7 +25,7 @@ kotlin {
         homepage = "Network module"
         ios.deploymentTarget = "14.1"
         framework {
-            baseName = "network"
+            baseName = "remote"
             isStatic = false
         }
         podfile = project.file("../../../iosApp/Podfile")
@@ -66,7 +66,13 @@ kotlin {
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting
+        val iosMain by getting {
+            dependencies {
+                with(Dependencies.Shared.Data.Remote.Native) {
+                    implementation(ktorClientCore)
+                }
+            }
+        }
         val iosTest by getting
     }
 }

@@ -37,7 +37,11 @@ kotlin {
                 implementation(project(":shared:feature:poi"))
 
                 with(Dependencies.Shared.Ui) {
-                    implementation(coroutines)
+                    implementation(coroutines) {
+                        version {
+                            strictly(Versions.coroutines)
+                        }
+                    }
                 }
             }
         }
@@ -60,13 +64,7 @@ kotlin {
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting {
-            dependencies {
-                with(Dependencies.Shared.Ui.Native) {
-                    implementation(coroutines)
-                }
-            }
-        }
+        val iosMain by getting
         val iosTest by getting
     }
 }
