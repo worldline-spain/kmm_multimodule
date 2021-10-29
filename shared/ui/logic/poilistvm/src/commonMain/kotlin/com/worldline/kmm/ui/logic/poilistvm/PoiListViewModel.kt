@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class PoiListViewModel(private val executor: Executor, private val poiRepository: PoiRepository) {
+class PoiListViewModel(executor: Executor, private val poiRepository: PoiRepository) {
 
     private val job = SupervisorJob()
 
@@ -18,6 +18,8 @@ class PoiListViewModel(private val executor: Executor, private val poiRepository
     private val _uiState = MutableStateFlow<PoiListState>(PoiListState.InProgress)
 
     val state: StateFlow<PoiListState> = _uiState
+    val nativeState
+        get() = state.asNativeFlow()
 
     fun attach() {
         scope.launch {

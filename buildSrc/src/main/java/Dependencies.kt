@@ -10,7 +10,7 @@ fun getVersionNumber(): Int {
 const val dexPath = "dexguard"
 
 object Versions {
-    const val kotlin = "1.5.31"
+    const val kotlin = "1.5.30"
     val versionCode = getVersionNumber()
     const val versionName = "1.1.1"
     const val coroutines = "1.5.2-native-mt"

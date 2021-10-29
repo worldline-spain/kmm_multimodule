@@ -4,6 +4,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("com.rickclephas.kmp.nativecoroutines") version "0.6.0"
 }
 
 version = "1.0"
@@ -31,6 +32,10 @@ kotlin {
     }
 
     sourceSets {
+        all {
+            languageSettings.optIn("kotlin.RequiresOptIn")
+        }
+
         val commonMain by getting {
             dependencies {
                 implementation(project(":shared:core"))
