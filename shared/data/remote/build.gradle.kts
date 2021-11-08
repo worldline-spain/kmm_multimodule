@@ -45,6 +45,9 @@ kotlin {
                     implementation(ktorLogging)
                     implementation(serialization)
                 }
+                with(Dependencies.DI) {
+                    implementation(koinCore)
+                }
             }
         }
         val commonTest by getting {
