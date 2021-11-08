@@ -43,6 +43,10 @@ kotlin {
                         }
                     }
                 }
+                with(Dependencies.DI) {
+                    implementation(koinCore)
+                    implementation(koinAndroid)
+                }
             }
         }
         val commonTest by getting {

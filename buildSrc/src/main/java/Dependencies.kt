@@ -16,6 +16,7 @@ object Versions {
     const val coroutines = "1.5.2-native-mt"
     const val serialization = "1.0.1"
     const val ktor = "1.6.4"
+    const val koin = "3.1.2"
     const val sqldelight = "1.5.2"
     const val arrow = "1.0.0"
 }
@@ -49,6 +50,11 @@ object Dependencies {
         const val recycler = "androidx.recyclerview:recyclerview:1.2.0-alpha01"
         const val material = "com.google.android.material:material:1.2.0-alpha03"
         const val coroutines = Shared.Ui.Android.coroutines
+    }
+
+    object DI {
+        const val koinCore = "io.insert-koin:koin-core:${Versions.koin}"
+        const val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
     }
 
     object Shared {

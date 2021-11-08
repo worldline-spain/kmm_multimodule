@@ -36,6 +36,10 @@ kotlin {
                 implementation(project(":shared:core"))
                 implementation(project(":shared:data:local"))
                 implementation(project(":shared:data:remote"))
+
+                with(Dependencies.DI) {
+                    implementation(koinCore)
+                }
             }
         }
         val commonTest by getting {

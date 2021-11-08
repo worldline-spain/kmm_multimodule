@@ -10,26 +10,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.worldline.kmm.android.databinding.ActivityMainBinding
 import com.worldline.kmm.core.Error
 import com.worldline.kmm.core.Poi
-import com.worldline.kmm.feature.poi.SharedPoiRepository
-import com.worldline.kmm.local.SharedPoiLocal
-import com.worldline.kmm.local.driver.DbDriverFactory
-import com.worldline.kmm.remote.SharedPoiRemote
 import com.worldline.kmm.ui.logic.poilistvm.PoiListState
 import com.worldline.kmm.ui.logic.poilistvm.PoiListViewModel
-import com.worldline.kmm.ui.logic.poilistvm.executor.Executor
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private val vm by lazy {
-        PoiListViewModel(
-            executor = Executor(),
-            poiRepository = SharedPoiRepository(
-                remote = SharedPoiRemote(),
-                local = SharedPoiLocal(driver = DbDriverFactory(this))
-            )
-        )
+        PoiListViewModel()
     }
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -62,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showSuccess(pois: List<Poi>) {
         updateVisibility(error = View.GONE, success = View.VISIBLE, View.GONE)
-        adapter.addAll(pois)
+        adapter.replace(pois.toMutableList())
     }
 
     private fun showError(error: Error) {
