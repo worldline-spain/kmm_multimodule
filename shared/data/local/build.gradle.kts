@@ -39,6 +39,9 @@ kotlin {
                 with(Dependencies.Shared.Data.Local) {
                     implementation(sqldelight)
                 }
+                with(Dependencies.DI) {
+                    implementation(koinCore)
+                }
             }
         }
         val commonTest by getting {
