@@ -20,7 +20,11 @@ dependencies {
     }
 
     with(Dependencies.Android) {
+        implementation(core)
         implementation(coroutines)
+        implementation(appCompat)
+        implementation(constraintLayout)
+        implementation(navigationFragment)
     }
 
     with(Dependencies.DI) {
@@ -28,10 +32,18 @@ dependencies {
         implementation(koinAndroid)
     }
 
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.1")
+    with(Dependencies.Compose) {
+        implementation(ui)
+        implementation(uiGraphics)
+        implementation(foundationLayout)
+        implementation(material)
+        implementation(navigation)
+        implementation(coilCompose)
+        implementation(accompanistNavigationAnimation)
+        implementation(accompanistSwipeToRefresh)
+        implementation(uiTooling)
+        implementation(constraintLayout)
+    }
 }
 
 android {
@@ -49,6 +61,17 @@ android {
         }
     }
     buildFeatures {
+        compose = true
         viewBinding = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.compose
+    }
+
+    packagingOptions {
+        exclude("META-INF/licenses/**")
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
     }
 }

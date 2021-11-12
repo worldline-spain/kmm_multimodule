@@ -1,0 +1,8 @@
+<resources>
+    <string name="access_title">Acceso</string>
+    <string name="access_subtitle">Siguiente: Cambiar contraseña</string>
+
+    <!--Poi list-->
+    <string name="poi_list_title">Puntos de interés</string>
+    <string name="poi_list_empty">No se han encontrado puntos de interés</string>
+</resources>
