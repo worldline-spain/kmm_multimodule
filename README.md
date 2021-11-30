@@ -24,11 +24,12 @@ One feature will involve at least 5 modules. For example, the `Poi list screen` 
 - `shared:data:local`: `PoiLocal`
 - `shared:core`: `core` data class...
 
-Technologies used:
+Technologies/libraries used:
 
-- `Coroutines`
-- `StateFlow`
-- `SQLDelight`
-- `Ktor`
+- `Coroutines`: https://kotlinlang.org/docs/coroutines-overview.html
+- `StateFlow`: https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-state-flow/
+- `SQLDelight`: https://cashapp.github.io/sqldelight/multiplatform_sqlite/
+- `Ktor`: https://ktor.io/docs/client.html
+- `Koin`: https://insert-koin.io/
 
 WIP
