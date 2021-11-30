@@ -24,7 +24,12 @@ One feature will involve at least 5 modules. For example, the `Poi list screen` 
 - `shared:data:local`: `PoiLocal`
 - `shared:core`: `core` data class...
 
-Technologies/libraries used:
+### Module diagram
+
+Take a look to this diagram, just to have a project picture:
+
+
+## Technologies/libraries used:
 
 - `Coroutines`: https://kotlinlang.org/docs/coroutines-overview.html
 - `StateFlow`: https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-state-flow/
