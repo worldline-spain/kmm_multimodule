@@ -17,9 +17,7 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    private val vm by lazy {
-        PoiListViewModel()
-    }
+    private val vm by lazy { PoiListViewModel() }
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 

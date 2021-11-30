@@ -1,13 +1,13 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'poilistvm'
+    spec.name                     = 'poirepository'
     spec.version                  = '1.0'
-    spec.homepage                 = 'Poi viewmodels module'
+    spec.homepage                 = 'Shared module'
     spec.source                   = { :git => "Not Published", :tag => "Cocoapods/#{spec.name}/#{spec.version}" }
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'Poi viewmodels module'
+    spec.summary                  = 'Poi features module'
 
-    spec.vendored_frameworks      = "build/cocoapods/framework/poilistvm.framework"
+    spec.vendored_frameworks      = "build/cocoapods/framework/PoiRepository.framework"
     spec.libraries                = "c++"
     spec.module_name              = "#{spec.name}_umbrella"
 
@@ -16,13 +16,13 @@ Pod::Spec.new do |spec|
                 
 
     spec.pod_target_xcconfig = {
-        'KOTLIN_PROJECT_PATH' => ':shared:ui:logic:poilistvm',
-        'PRODUCT_MODULE_NAME' => 'poilistvm',
+        'KOTLIN_PROJECT_PATH' => ':shared:feature:poi:poirepository',
+        'PRODUCT_MODULE_NAME' => 'poirepository',
     }
 
     spec.script_phases = [
         {
-            :name => 'Build poilistvm',
+            :name => 'Build poirepository',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT

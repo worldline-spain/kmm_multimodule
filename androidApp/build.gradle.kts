@@ -12,7 +12,7 @@ dependencies {
         implementation(project(core))
 
         with(Poi) {
-            implementation(project(vm))
+            implementation(project(ui))
             implementation(project(repository))
             implementation(project(remote))
             implementation(project(local))

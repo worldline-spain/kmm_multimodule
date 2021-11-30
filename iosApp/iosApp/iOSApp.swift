@@ -1,6 +1,5 @@
 import SwiftUI
-
-import poilistvm
+import PoiUI
 
 @main
 struct iOSApp: App {

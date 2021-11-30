@@ -1,4 +1,4 @@
-import poilistvm
+import PoiUI
 
 class ObservableViewModel<
   ViewModel: RootViewModel,

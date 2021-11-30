@@ -20,25 +20,32 @@ kotlin {
     iosTarget("ios") {}
 
     cocoapods {
-        summary = "Poi features module"
-        homepage = "Shared module"
+        summary = "Poi viewmodels module"
+        homepage = "Poi viewmodels module"
         ios.deploymentTarget = "14.1"
         framework {
-            baseName = "poi"
+            baseName = "PoiUI"
             isStatic = false
         }
-        podfile = project.file("../../../iosApp/Podfile")
+        podfile = project.file("../../../../iosApp/Podfile")
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":shared:core"))
-                implementation(project(":shared:data:local"))
-                implementation(project(":shared:data:remote"))
+                implementation(project(Dependencies.Modules.Poi.repository))
+                implementation(project(Dependencies.Modules.core))
 
+                with(Dependencies.Shared.Ui) {
+                    implementation(coroutines) {
+                        version {
+                            strictly(Versions.coroutines)
+                        }
+                    }
+                }
                 with(Dependencies.DI) {
                     implementation(koinCore)
+                    implementation(koinAndroid)
                 }
             }
         }
@@ -48,7 +55,13 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                with(Dependencies.Shared.Ui.Android) {
+                    implementation(coroutines)
+                }
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
