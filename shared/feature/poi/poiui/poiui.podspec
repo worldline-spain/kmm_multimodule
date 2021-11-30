@@ -1,13 +1,13 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'poi'
+    spec.name                     = 'poiui'
     spec.version                  = '1.0'
-    spec.homepage                 = 'Shared module'
+    spec.homepage                 = 'Poi viewmodels module'
     spec.source                   = { :git => "Not Published", :tag => "Cocoapods/#{spec.name}/#{spec.version}" }
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'Poi features module'
+    spec.summary                  = 'Poi viewmodels module'
 
-    spec.vendored_frameworks      = "build/cocoapods/framework/poi.framework"
+    spec.vendored_frameworks      = "build/cocoapods/framework/PoiUI.framework"
     spec.libraries                = "c++"
     spec.module_name              = "#{spec.name}_umbrella"
 
@@ -16,13 +16,13 @@ Pod::Spec.new do |spec|
                 
 
     spec.pod_target_xcconfig = {
-        'KOTLIN_PROJECT_PATH' => ':shared:feature:poi',
-        'PRODUCT_MODULE_NAME' => 'poi',
+        'KOTLIN_PROJECT_PATH' => ':shared:feature:poi:poiui',
+        'PRODUCT_MODULE_NAME' => 'poiui',
     }
 
     spec.script_phases = [
         {
-            :name => 'Build poi',
+            :name => 'Build poiui',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT
@@ -32,7 +32,7 @@ Pod::Spec.new do |spec|
                 fi
                 set -ev
                 REPO_ROOT="$PODS_TARGET_SRCROOT"
-                "$REPO_ROOT/../../../gradlew" -p "$REPO_ROOT" $KOTLIN_PROJECT_PATH:syncFramework \
+                "$REPO_ROOT/../../../../gradlew" -p "$REPO_ROOT" $KOTLIN_PROJECT_PATH:syncFramework \
                     -Pkotlin.native.cocoapods.platform=$PLATFORM_NAME \
                     -Pkotlin.native.cocoapods.archs="$ARCHS" \
                     -Pkotlin.native.cocoapods.configuration=$CONFIGURATION \

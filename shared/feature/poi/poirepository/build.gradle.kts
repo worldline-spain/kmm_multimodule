@@ -24,18 +24,19 @@ kotlin {
         homepage = "Shared module"
         ios.deploymentTarget = "14.1"
         framework {
-            baseName = "poi"
+            baseName = "PoiRepository"
             isStatic = false
+            linkerOpts.add("-lsqlite3")
         }
-        podfile = project.file("../../../iosApp/Podfile")
+        podfile = project.file("../../../../iosApp/Podfile")
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":shared:core"))
-                implementation(project(":shared:data:local"))
-                implementation(project(":shared:data:remote"))
+                implementation(project(Dependencies.Modules.Poi.local))
+                implementation(project(Dependencies.Modules.Poi.remote))
+                implementation(project(Dependencies.Modules.core))
 
                 with(Dependencies.DI) {
                     implementation(koinCore)

@@ -34,7 +34,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":shared:core"))
+                implementation(project(Dependencies.Modules.core))
 
                 with(Dependencies.Shared.Data.Local) {
                     implementation(sqldelight)
@@ -78,6 +78,7 @@ sqldelight {
     database("kmm") {
         packageName = "com.worldline.kmm.db"
     }
+    linkSqlite = true
 }
 
 android {

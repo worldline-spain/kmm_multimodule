@@ -14,7 +14,7 @@ import io.ktor.utils.io.core.*
 class SharedPoiRemote : PoiRemote {
 
     companion object {
-        private const val ENDPOINT = "https://t21services.herokuapp.com"
+        private const val ENDPOINT = "https://sergiocasero.es"
     }
 
     private val http
@@ -23,7 +23,7 @@ class SharedPoiRemote : PoiRemote {
     override suspend fun getAllPois(): Either<Error, List<Poi>> = execute {
         http.use {
             it.get<PoiResponseDto> {
-                url.withPath("/points")
+                url.withPath("/pois.json")
             }.list.map { it.toModel() }
         }
     }

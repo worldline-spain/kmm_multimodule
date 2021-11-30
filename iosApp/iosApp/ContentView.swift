@@ -1,5 +1,5 @@
 import SwiftUI
-import poilistvm
+import PoiUI
 
 struct ContentView: View {
 
@@ -7,7 +7,7 @@ struct ContentView: View {
 
   var body: some View {
     let viewState = observable.state
-    PoiListContent(state: viewState)
+    PoiListScreen(state: viewState)
       .onAppear(perform: {
         observable.viewModel.attach()
       }).onDisappear(perform: {
@@ -17,7 +17,7 @@ struct ContentView: View {
   }
 }
 
-struct PoiListContent: View {
+struct PoiListScreen: View {
 
   var state: PoiListState
 
@@ -28,16 +28,30 @@ struct PoiListContent: View {
       EmptyView()
     } else if state is PoiListState.Success {
       if let response = state as? PoiListState.Success {
+          PoiListContent(pois: response.pois)
+      }
+    }
+  }
+}
+
+struct PoiListContent: View {
+    
+    var pois: [CorePoi] = []
+    
+    init(pois: [CorePoi]) {
+        self.pois.removeAll()
+        self.pois.append(contentsOf: pois)
+    }
+    
+    var body: some View {
         List {
-          ForEach(response.pois, id: \.self.id) { poi in
+          ForEach(pois, id: \.self.id) { poi in
             HStack {
               Text(poi.title)
             }.padding()
           }
         }
-      }
     }
-  }
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -36,8 +36,8 @@ object Dependencies {
         const val core = ":shared:core"
 
         object Poi {
-            const val vm = ":shared:ui:logic:poilistvm"
-            const val repository = ":shared:feature:poi"
+            const val ui = ":shared:feature:poi:poiui"
+            const val repository = ":shared:feature:poi:poirepository"
             const val remote = ":shared:data:remote"
             const val local = ":shared:data:local"
         }

@@ -24,8 +24,9 @@ kotlin {
         homepage = "Poi viewmodels module"
         ios.deploymentTarget = "14.1"
         framework {
-            baseName = "poilistvm"
+            baseName = "PoiUI"
             isStatic = false
+            linkerOpts.add("-lsqlite3")
         }
         podfile = project.file("../../../../iosApp/Podfile")
     }
@@ -33,8 +34,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":shared:core"))
-                implementation(project(":shared:feature:poi"))
+                implementation(project(Dependencies.Modules.Poi.repository))
+                implementation(project(Dependencies.Modules.core))
 
                 with(Dependencies.Shared.Ui) {
                     implementation(coroutines) {

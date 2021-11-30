@@ -34,8 +34,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":shared:core"))
-                // implementation(Dependencies.Shared.arrow)
+                implementation(project(Dependencies.Modules.core))
 
                 with(Dependencies.Shared.Data.Remote) {
                     implementation(ktorClientCore)
