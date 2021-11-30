@@ -28,6 +28,7 @@ One feature will involve at least 5 modules. For example, the `Poi list screen` 
 
 Take a look to this diagram, just to have a project picture:
 
+![alt text](https://github.com/worldline-spain/kmm_multimodule/blob/master/art/diagram.jpeg?raw=true "Diagram")
 
 ## Technologies/libraries used:
 
