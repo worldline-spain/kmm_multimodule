@@ -1,7 +1,7 @@
 import SwiftUI
 import PoiUI
 
-struct ContentView: View {
+struct PoiListView: View {
 
   @ObservedObject var observable = ObservableViewModel<PoiListViewModel, PoiListState>(viewModel: PoiListViewModel())
 
@@ -57,6 +57,6 @@ struct PoiListContent: View {
 struct ContentView_Previews: PreviewProvider {
 
   static var previews: some View {
-    ContentView()
+    PoiListView()
   }
 }
