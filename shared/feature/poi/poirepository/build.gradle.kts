@@ -26,6 +26,7 @@ kotlin {
         framework {
             baseName = "PoiRepository"
             isStatic = false
+            linkerOpts.add("-lsqlite3")
         }
         podfile = project.file("../../../../iosApp/Podfile")
     }

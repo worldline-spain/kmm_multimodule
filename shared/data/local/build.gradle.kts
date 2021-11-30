@@ -78,6 +78,7 @@ sqldelight {
     database("kmm") {
         packageName = "com.worldline.kmm.db"
     }
+    linkSqlite = true
 }
 
 android {
