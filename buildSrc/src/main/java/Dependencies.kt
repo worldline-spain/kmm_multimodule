@@ -7,18 +7,26 @@ fun getVersionNumber(): Int {
     return versionNumber.toInt()
 }
 
-const val dexPath = "dexguard"
-
 object Versions {
-    const val kotlin = "1.5.31"
+    const val kotlin = "1.5.30"
     val versionCode = getVersionNumber()
     const val versionName = "1.1.1"
     const val coroutines = "1.5.2-native-mt"
-    const val serialization = "1.0.1"
+    const val serialization = "1.2.2"
     const val ktor = "1.6.4"
     const val koin = "3.1.2"
-    const val sqldelight = "1.5.2"
+    const val sqldelight = "1.5.0"
+    const val coreKtx = "1.6.0"
+    const val navigation = "2.3.5"
+    const val klock = "2.4.1"
+    const val multiplatformSettings = "0.8"
     const val arrow = "1.0.0"
+
+    //Jetpack Compose
+    const val compose = "1.0.3"
+    const val navCompose = "2.4.0-alpha08"
+    const val accompanist = "0.17.0"
+    const val constraintLayout = "1.0.0-beta02"
 }
 
 object Dependencies {
@@ -36,7 +44,7 @@ object Dependencies {
     }
 
     object Root {
-        const val android = "com.android.tools.build:gradle:4.2.2"
+        const val android = "com.android.tools.build:gradle:7.0.2"
         const val serialization = "org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}"
         const val cocoapods = "co.touchlab:kotlinnativecocoapods:0.6"
         const val sqldelight = "com.squareup.sqldelight:gradle-plugin:${Versions.sqldelight}"
@@ -44,17 +52,37 @@ object Dependencies {
     }
 
     object Android {
-        const val core = "androidx.core:core-ktx:1.1.0"
-        const val appCompat = "androidx.appcompat:appcompat:1.1.0"
-        const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
-        const val recycler = "androidx.recyclerview:recyclerview:1.2.0-alpha01"
-        const val material = "com.google.android.material:material:1.2.0-alpha03"
+        const val core = "androidx.core:core-ktx:${Versions.coreKtx}"
+        const val appCompat = "androidx.appcompat:appcompat:1.3.1"
+        const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.0"
+        const val navigationFragment =
+            "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+        const val recycler = "androidx.recyclerview:recyclerview:1.2.0"
+        const val material = "com.google.android.material:material:1.4.0"
         const val coroutines = Shared.Ui.Android.coroutines
     }
 
     object DI {
         const val koinCore = "io.insert-koin:koin-core:${Versions.koin}"
         const val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
+        const val koinCompose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
+    }
+
+    object Compose {
+        const val ui = "androidx.compose.ui:ui:${Versions.compose}"
+        const val uiGraphics = "androidx.compose.ui:ui-graphics:${Versions.compose}"
+        const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+        const val foundationLayout =
+            "androidx.compose.foundation:foundation-layout:${Versions.compose}"
+        const val material = "androidx.compose.material:material:${Versions.compose}"
+        const val navigation = "androidx.navigation:navigation-compose:${Versions.navCompose}"
+        const val constraintLayout =
+            "androidx.constraintlayout:constraintlayout-compose:${Versions.constraintLayout}"
+
+        const val coilCompose = "io.coil-kt:coil-compose:1.3.1"
+        const val accompanistNavigationAnimation =
+            "com.google.accompanist:accompanist-navigation-animation:${Versions.accompanist}"
+        const val accompanistSwipeToRefresh =  "com.google.accompanist:accompanist-swiperefresh:${Versions.accompanist}"
     }
 
     object Shared {
@@ -69,6 +97,9 @@ object Dependencies {
             object Android {
                 const val coroutines =
                     "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+                const val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
+                const val navigationFragment =
+                    "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
             }
 
             object Native {

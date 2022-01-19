@@ -6,6 +6,7 @@ import com.worldline.kmm.viewmodel.RootViewModel
 import com.worldline.kmm.viewmodel.ViewState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -17,6 +18,12 @@ class PoiListViewModel : RootViewModel(), KoinComponent {
     private val _uiState = MutableStateFlow<PoiListState>(PoiListState.InProgress)
 
     override val state: StateFlow<PoiListState> = _uiState
+
+    fun onTriggerEvent(event: PoiListEvents) {
+        when (event) {
+            PoiListEvents.Attach -> attach()
+        }
+    }
 
     override fun attach() {
         vmScope.launch {
@@ -34,4 +41,8 @@ sealed class PoiListState : ViewState() {
     object InProgress : PoiListState()
     class Error(val error: com.worldline.kmm.core.Error) : PoiListState()
     class Success(val pois: List<Poi>) : PoiListState()
+}
+
+sealed class PoiListEvents {
+    object Attach : PoiListEvents()
 }

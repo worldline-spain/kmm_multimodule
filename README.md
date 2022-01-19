@@ -2,33 +2,33 @@
 
 ## Introduction
 
-Hello adn welcome! This is our approach about how to implement a kotlin multiplatform Architecture.
+Hello and welcome! This is our approach to implement a kotlin multiplatform Architecture.
 This repo is still Work-In-Progess but for sure you can just take a look!
 
 ## Project structure
 
-The project is based on 3 main "folders" but lot of modules, let us explain:
+The project is based on only 3 main "folders" but lots of modules. The folders are:
 
 `androidApp`: This includes the activities/fragments needed to paint the UI
 `iosApp`: This includes the `SwiftUI` views
 `shared`: Includes all the `shared` submodules.
 
-## How a feature looks like?
+## What does a feature look like?
 
-One feature will involve at least 5 modules. For example, the `Poi list screen` contains these:
+A feature involves at least 5 modules. For example, the `Poi list screen` contains:
 
 - `androidApp`/`iosApp`: `MainActivity` and `ContentView`
 - `shared:feature:poi:poiui`: `PoiUI`
 - `shared:feature:poi:poirepository`: `PoiRepository`
 - `shared:data:remote`: `PoiRemote`
 - `shared:data:local`: `PoiLocal`
-- `shared:core`: `core` data class...
+- `shared:core`: `core` data classes
 
 ### Module diagram
 
-Take a look to this diagram, just to have a project picture:
+Take a look at this diagram, just to have a picture of the project:
 
-![alt text](https://github.com/worldline-spain/kmm_multimodule/blob/master/art/diagram.jpeg?raw=true "Diagram")
+![Diagram](https://github.com/worldline-spain/kmm_multimodule/blob/master/art/diagram.jpeg?raw=true "Diagram")
 
 ## Technologies/libraries used:
 
