@@ -1,5 +1,6 @@
 package com.worldline.kmm.ui.logic.poilistvm
 
+import androidx.lifecycle.ViewModel
 import com.worldline.kmm.core.Either
 import com.worldline.kmm.core.Error
 import com.worldline.kmm.ui.logic.poilistvm.executor.Executor
@@ -11,7 +12,7 @@ import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-actual abstract class RootViewModel : KoinComponent {
+actual abstract class RootViewModel : ViewModel(), KoinComponent {
 
     private val job = SupervisorJob()
 
