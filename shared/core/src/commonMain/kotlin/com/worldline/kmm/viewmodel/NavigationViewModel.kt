@@ -13,10 +13,10 @@ class NavigationViewModel : RootViewModel<NavigationState>() {
         // do nothing
     }
 
-    fun onEvent(event: NavigationEvent) = when (event) {
-        NavigationEvent.Home.OnListTap -> _uiState.value = NavigationState.Home.List
-        NavigationEvent.Home.OnMapTap -> _uiState.value = NavigationState.Home.Map
-        is NavigationEvent.OnDetailTap -> _uiState.value = NavigationState.Detail(event.id)
+    fun onEvent(screen: NavigationEvent) = when (screen) {
+        NavigationEvent.Home.List -> _uiState.value = NavigationState.Home.List
+        NavigationEvent.Home.Map -> _uiState.value = NavigationState.Home.Map
+        is NavigationEvent.Detail -> _uiState.value = NavigationState.Detail(screen.id)
     }
 }
 
@@ -26,14 +26,16 @@ sealed class NavigationState : ViewState() {
         object Map : Home()
     }
 
-    data class Detail(val id: String) : NavigationState()
+    data class Detail(val id: Long) : NavigationState()
 }
 
-sealed class NavigationEvent {
-    sealed class Home : NavigationEvent() {
-        object OnListTap : Home()
-        object OnMapTap : Home()
+sealed class NavigationEvent(val route: String) {
+    sealed class Home(route: String) : NavigationEvent(route) {
+        object List : Home("home/list")
+        object Map : Home("home/map")
     }
 
-    data class OnDetailTap(val id: String) : NavigationEvent()
+    data class Detail(val id: Long = 0) : NavigationEvent("detail/{poiId}") {
+        fun createRoute() = "detail/$id"
+    }
 }

@@ -21,6 +21,7 @@ import com.worldline.kmm.core.Poi
 import com.worldline.kmm.ui.logic.poilistvm.PoiListEvent
 import com.worldline.kmm.ui.logic.poilistvm.PoiListState
 import com.worldline.kmm.ui.logic.poilistvm.PoiListViewModel
+import com.worldline.kmm.viewmodel.NavigationEvent
 import com.worldline.kmm.viewmodel.RootViewModel
 import com.worldline.kmm.viewmodel.ViewState
 
@@ -36,15 +37,22 @@ fun <V : ViewState> RootViewModel<V>.stateWithLifecycle(): State<V> {
 }
 
 @Composable
-fun PoiListRoute(viewModel: PoiListViewModel) {
+fun PoiListRoute(onNavigationEvent: (NavigationEvent) -> Unit) {
+    val viewModel = remember { PoiListViewModel() }
 
-    PoiListContent(state = viewModel.stateWithLifecycle().value) {
-        viewModel.onEvent(it)
-    }
+    PoiListContent(
+        state = viewModel.stateWithLifecycle().value,
+        onEvent = { viewModel.onEvent(it) },
+        onNavigationEvent = onNavigationEvent
+    )
 }
 
 @Composable
-fun PoiListContent(state: PoiListState, onEvent: (PoiListEvent) -> Unit) {
+fun PoiListContent(
+    state: PoiListState,
+    onEvent: (PoiListEvent) -> Unit,
+    onNavigationEvent: (NavigationEvent) -> Unit
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -61,7 +69,7 @@ fun PoiListContent(state: PoiListState, onEvent: (PoiListEvent) -> Unit) {
         content = {
             when (state) {
                 is PoiListState.InProgress -> LoadingView()
-                is PoiListState.Success -> PoiListSuccessView(state)
+                is PoiListState.Success -> PoiListSuccessView(state, onNavigationEvent)
                 is PoiListState.Error -> EmptyView()
             }
         })
@@ -105,6 +113,7 @@ private fun EmptyView() {
 @Composable
 private fun PoiListSuccessView(
     poisResponse: PoiListState.Success,
+    onNavigationEvent: (NavigationEvent) -> Unit,
 ) {
     LazyColumn(
         Modifier
@@ -113,7 +122,11 @@ private fun PoiListSuccessView(
                 all = 16.dp
             )
     ) {
-        items(poisResponse.pois) { poi -> PoiCard(poi = poi) }
+        items(poisResponse.pois) { poi ->
+            Button(onClick = { onNavigationEvent(NavigationEvent.Detail(poi.id)) }) {
+                PoiCard(poi = poi)
+            }
+        }
     }
 }
 
@@ -169,6 +182,6 @@ fun PoiCardListPreview() {
         longitude = 2.1649997898845004,
     )
     AppTheme {
-        PoiListContent(state = PoiListState.Success(listOf(poi1, poi2))) {}
+        PoiListContent(state = PoiListState.Success(listOf(poi1, poi2)), {}, {})
     }
 }
