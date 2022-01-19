@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
+import com.worldline.kmm.android.core.navigation.PoiApp
 import com.worldline.kmm.android.core.ui.RootActivity
 
 class HomeActivity : RootActivity() {
@@ -15,6 +16,6 @@ class HomeActivity : RootActivity() {
     @ExperimentalComposeUiApi
     @Composable
     override fun BuildUI() {
-        navigator.HomeNavigation(this)
+        PoiApp()
     }
 }

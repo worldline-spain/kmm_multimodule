@@ -6,12 +6,11 @@ import com.worldline.kmm.viewmodel.RootViewModel
 import com.worldline.kmm.viewmodel.ViewState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class PoiListViewModel : RootViewModel(), KoinComponent {
+class PoiListViewModel : RootViewModel<PoiListState>(), KoinComponent {
 
     private val poiRepository: PoiRepository by inject()
 
@@ -19,17 +18,16 @@ class PoiListViewModel : RootViewModel(), KoinComponent {
 
     override val state: StateFlow<PoiListState> = _uiState
 
-    fun onTriggerEvent(event: PoiListEvents) {
-        when (event) {
-            PoiListEvents.Attach -> attach()
-        }
+    fun onEvent(event: PoiListEvent) = when (event) {
+        PoiListEvent.Attach -> attach()
+        is PoiListEvent.OnItemClick -> TODO("todo")
     }
 
     override fun attach() {
         vmScope.launch {
             _uiState.value = PoiListState.InProgress
 
-            poiRepository.getAll(false).fold(
+            execute { poiRepository.getAll(false) }.fold(
                 error = { _uiState.value = PoiListState.Error(it) },
                 success = { _uiState.value = PoiListState.Success(it) }
             )
@@ -43,6 +41,7 @@ sealed class PoiListState : ViewState() {
     class Success(val pois: List<Poi>) : PoiListState()
 }
 
-sealed class PoiListEvents {
-    object Attach : PoiListEvents()
+sealed class PoiListEvent {
+    object Attach : PoiListEvent()
+    data class OnItemClick(val poi: Poi) : PoiListEvent()
 }

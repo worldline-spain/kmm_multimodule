@@ -9,21 +9,45 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.flowWithLifecycle
 import com.worldline.kmm.android.R
 import com.worldline.kmm.android.theme.AppTheme
 import com.worldline.kmm.core.Poi
-import com.worldline.kmm.ui.logic.poilistvm.PoiListEvents
+import com.worldline.kmm.ui.logic.poilistvm.PoiListEvent
 import com.worldline.kmm.ui.logic.poilistvm.PoiListState
+import com.worldline.kmm.ui.logic.poilistvm.PoiListViewModel
+import com.worldline.kmm.viewmodel.RootViewModel
+import com.worldline.kmm.viewmodel.ViewState
+
+// private val poiListViewModel by lazy { PoiListViewModel() }
 
 @Composable
-fun PoiListScreen(
-    state: PoiListState,
-    onTriggerEvent: (PoiListEvents) -> Unit,
-) {
+fun <V : ViewState> RootViewModel<V>.stateWithLifecycle(): State<V> {
+    val lifecycleOwner = LocalLifecycleOwner.current
+
+    val flow = remember(state, lifecycleOwner) {
+        state.flowWithLifecycle(lifecycleOwner.lifecycle)
+    }
+
+    return flow.collectAsState(state.value)
+}
+
+@Composable
+fun PoiListRoute() {
+    val viewModel by lazy { PoiListViewModel() }
+
+    PoiListContent(state = viewModel.stateWithLifecycle().value) {
+        viewModel.onEvent(it)
+    }
+}
+
+@Composable
+fun PoiListContent(state: PoiListState, onEvent: (PoiListEvent) -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -40,13 +64,13 @@ fun PoiListScreen(
         content = {
             when (state) {
                 is PoiListState.InProgress -> LoadingView()
-                is PoiListState.Success -> PoiListContent(state)
+                is PoiListState.Success -> PoiListSuccessView(state)
                 is PoiListState.Error -> EmptyView()
             }
         })
 
     LaunchedEffect(Unit) {
-        onTriggerEvent(PoiListEvents.Attach)
+        onEvent(PoiListEvent.Attach)
     }
 }
 
@@ -82,7 +106,7 @@ private fun EmptyView() {
 }
 
 @Composable
-private fun PoiListContent(
+private fun PoiListSuccessView(
     poisResponse: PoiListState.Success,
 ) {
     LazyColumn(
@@ -148,10 +172,6 @@ fun PoiCardListPreview() {
         longitude = 2.1649997898845004,
     )
     AppTheme {
-        PoiListScreen(
-            state = PoiListState.Success(
-                pois = listOf(poi1, poi2)
-            ),
-            {})
+        PoiListRoute()
     }
 }

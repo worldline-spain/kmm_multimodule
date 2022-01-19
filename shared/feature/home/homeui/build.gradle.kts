@@ -34,6 +34,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(Dependencies.Modules.core))
+
                 with(Dependencies.Shared.Ui) {
                     implementation(coroutines) {
                         version {

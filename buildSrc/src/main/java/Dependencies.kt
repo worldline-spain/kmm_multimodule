@@ -27,6 +27,7 @@ object Versions {
     const val navCompose = "2.4.0-alpha08"
     const val accompanist = "0.17.0"
     const val constraintLayout = "1.0.0-beta02"
+    const val lifecycle = "2.4.0"
 }
 
 object Dependencies {
@@ -69,6 +70,7 @@ object Dependencies {
     }
 
     object Compose {
+        const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
         const val ui = "androidx.compose.ui:ui:${Versions.compose}"
         const val uiGraphics = "androidx.compose.ui:ui-graphics:${Versions.compose}"
         const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"

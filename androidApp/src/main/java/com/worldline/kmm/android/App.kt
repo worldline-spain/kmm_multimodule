@@ -17,3 +17,6 @@ class App : Application() {
         }
     }
 }
+
+val <T> T.exhaustive: T
+    get() = this

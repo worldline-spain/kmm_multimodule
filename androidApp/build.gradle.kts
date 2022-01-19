@@ -43,6 +43,7 @@ dependencies {
         implementation(accompanistSwipeToRefresh)
         implementation(uiTooling)
         implementation(constraintLayout)
+        implementation(lifecycle)
     }
 }
 

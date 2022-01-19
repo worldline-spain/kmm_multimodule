@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-abstract class RootViewModel : KoinComponent {
+abstract class RootViewModel<V : ViewState> : KoinComponent {
 
     private val job = SupervisorJob()
 
@@ -22,7 +22,7 @@ abstract class RootViewModel : KoinComponent {
 
     protected val vmScope: CoroutineScope get() = CoroutineScope(job + executor.main)
 
-    abstract val state: StateFlow<ViewState>
+    abstract val state: StateFlow<V>
 
     abstract fun attach()
 
