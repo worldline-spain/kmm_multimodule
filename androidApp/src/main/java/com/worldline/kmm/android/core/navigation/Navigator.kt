@@ -8,20 +8,24 @@ import androidx.navigation.compose.rememberNavController
 import com.worldline.kmm.android.exhaustive
 import com.worldline.kmm.android.ui.home.poilist.PoiListRoute
 import com.worldline.kmm.android.ui.home.poilist.stateWithLifecycle
+import com.worldline.kmm.ui.logic.poilistvm.PoiListViewModel
 import com.worldline.kmm.viewmodel.NavigationState
 import com.worldline.kmm.viewmodel.NavigationViewModel
+
+
+private val navigationViewModel by lazy { NavigationViewModel() }
+private val poiListViewModel by lazy { PoiListViewModel() }
 
 @Composable
 fun PoiApp(navController: NavHostController = rememberNavController()) {
 
     NavHost(navController = navController, startDestination = HomeRoutes.PoiList.routeName) {
         composable(route = HomeRoutes.PoiList.routeName) {
-            PoiListRoute()
+            PoiListRoute(poiListViewModel)
         }
     }
 
-    val viewModel by lazy { NavigationViewModel() }
-    val state = viewModel.stateWithLifecycle().value
+    val state = navigationViewModel.stateWithLifecycle().value
 
     when (state) {
         is NavigationState.Detail -> TODO()

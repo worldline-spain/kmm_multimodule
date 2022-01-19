@@ -24,8 +24,6 @@ import com.worldline.kmm.ui.logic.poilistvm.PoiListViewModel
 import com.worldline.kmm.viewmodel.RootViewModel
 import com.worldline.kmm.viewmodel.ViewState
 
-// private val poiListViewModel by lazy { PoiListViewModel() }
-
 @Composable
 fun <V : ViewState> RootViewModel<V>.stateWithLifecycle(): State<V> {
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -38,8 +36,7 @@ fun <V : ViewState> RootViewModel<V>.stateWithLifecycle(): State<V> {
 }
 
 @Composable
-fun PoiListRoute() {
-    val viewModel by lazy { PoiListViewModel() }
+fun PoiListRoute(viewModel: PoiListViewModel) {
 
     PoiListContent(state = viewModel.stateWithLifecycle().value) {
         viewModel.onEvent(it)
@@ -172,6 +169,6 @@ fun PoiCardListPreview() {
         longitude = 2.1649997898845004,
     )
     AppTheme {
-        PoiListRoute()
+        PoiListContent(state = PoiListState.Success(listOf(poi1, poi2))) {}
     }
 }
