@@ -1,4 +1,4 @@
-package com.worldline.kmm.ui.logic.poilistvm
+package com.worldline.kmm.home.logic.poilistvm
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.StateFlow

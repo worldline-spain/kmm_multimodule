@@ -1,9 +1,7 @@
-package com.worldline.kmm.ui.logic.poilistvm
+package com.worldline.kmm.home.logic.poilistvm
 
 import com.worldline.kmm.core.Poi
 import com.worldline.kmm.feature.poi.PoiRepository
-import com.worldline.kmm.viewmodel.RootViewModel
-import com.worldline.kmm.viewmodel.ViewState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.worldline.kmm.ui.logic.poilistvm.executor
+package com.worldline.kmm.viewmodel.executor
 
 import kotlinx.coroutines.CoroutineDispatcher
 

@@ -20,16 +20,15 @@ kotlin {
     iosTarget("ios") {}
 
     cocoapods {
-        summary = "Core module"
-        homepage = "Core module"
+        summary = "Home ViewModel module"
+        homepage = "Home ViewModel module"
         ios.deploymentTarget = "14.1"
-
         framework {
-            baseName = "core"
+            baseName = "HomeUI"
             isStatic = false
+            linkerOpts.add("-lsqlite3")
         }
-
-        podfile = project.file("../../iosApp/Podfile")
+        podfile = project.file("../../../../iosApp/Podfile")
     }
 
     sourceSets {
@@ -44,6 +43,7 @@ kotlin {
                 }
                 with(Dependencies.DI) {
                     implementation(koinCore)
+                    implementation(koinAndroid)
                 }
             }
         }
@@ -53,7 +53,13 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                with(Dependencies.Shared.Ui.Android) {
+                    implementation(coroutines)
+                }
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))

@@ -57,6 +57,6 @@ struct PoiListContent: View {
 struct ContentView_Previews: PreviewProvider {
 
   static var previews: some View {
-    PoiListView()
+      PoiListView()
   }
 }

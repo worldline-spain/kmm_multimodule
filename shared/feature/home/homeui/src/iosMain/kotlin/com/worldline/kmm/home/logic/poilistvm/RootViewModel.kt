@@ -2,7 +2,8 @@ package com.worldline.kmm.ui.logic.poilistvm
 
 import com.worldline.kmm.core.Either
 import com.worldline.kmm.core.Error
-import com.worldline.kmm.ui.logic.poilistvm.executor.Executor
+import com.worldline.kmm.home.logic.poilistvm.ViewState
+import com.worldline.kmm.home.logic.poilistvm.executor.Executor
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,6 +1,6 @@
-package com.worldline.kmm.ui.di
+package com.worldline.kmm.home.di
 
-import com.worldline.kmm.viewmodel.executor.Executor
+import com.worldline.kmm.home.logic.poilistvm.executor.Executor
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
