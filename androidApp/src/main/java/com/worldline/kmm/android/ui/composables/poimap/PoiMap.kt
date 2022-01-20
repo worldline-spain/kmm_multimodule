@@ -13,8 +13,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.viewinterop.AndroidView
 import com.mapbox.geojson.Point
+import com.mapbox.geojson.Polygon
+import com.mapbox.maps.EdgeInsets
 import com.mapbox.maps.MapView
 import com.mapbox.maps.Style
+import com.mapbox.maps.plugin.animation.flyTo
 import com.mapbox.maps.plugin.annotation.annotations
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
 import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
@@ -56,14 +59,25 @@ fun MapSuccessView(pois: List<Poi>) {
             MapView(context).apply {
                 val map = this.getMapboxMap()
                 map.loadStyleUri(Style.MAPBOX_STREETS)
-                val api = annotations
-                val manager = api.createPointAnnotationManager(this)
-                pois.forEach {
-                    val options = PointAnnotationOptions()
-                        .withPoint(Point.fromLngLat(it.longitude, it.latitude))
-                        .withIconImage(bitmapFromDrawableRes(context, R.drawable.red_marker)!!)
-                    manager.create(options)
+                map.addOnStyleLoadedListener {
+                    val api = annotations
+                    val manager = api.createPointAnnotationManager(this)
+                    pois.forEach {
+                        val options = PointAnnotationOptions()
+                            .withPoint(Point.fromLngLat(it.longitude, it.latitude))
+                            .withIconImage(bitmapFromDrawableRes(context, R.drawable.red_marker)!!)
+                        manager.create(options)
+                    }
+
+                    val coordinates = listOf(
+                        pois.map { Point.fromLngLat(it.longitude, it.latitude) }
+                    )
+                    val polygon = Polygon.fromLngLats(coordinates)
+                    val position =
+                        map.cameraForGeometry(polygon, EdgeInsets(100.0, 100.0, 100.0, 100.0))
+                    map.flyTo(position)
                 }
+
             }
         }
     )
