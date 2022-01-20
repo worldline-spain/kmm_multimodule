@@ -1,23 +1,23 @@
 package com.worldline.kmm.android.ui.composables.poilist
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.flowWithLifecycle
+import coil.compose.rememberImagePainter
 import com.worldline.kmm.android.R
 import com.worldline.kmm.android.theme.AppTheme
 import com.worldline.kmm.core.Poi
@@ -119,15 +119,30 @@ private fun PoiListSuccessView(
 
 @Composable
 fun PoiCard(poi: Poi) {
-    Row {
-        Text(
-            text = poi.title,
-            style = MaterialTheme.typography.h5.copy(color = MaterialTheme.colors.secondary),
-            modifier = Modifier
-                .align(Alignment.CenterVertically)
-                .padding(vertical = 8.dp)
-        )
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(all = 4.dp)
+    ) {
+        Row {
+            Image(
+                painter = rememberImagePainter(poi.image),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(80.dp)
+                    .padding(end = 8.dp)
+            )
+            Text(
+                text = poi.title,
+                style = MaterialTheme.typography.h5.copy(color = MaterialTheme.colors.secondary),
+                modifier = Modifier
+                    .align(Alignment.CenterVertically)
+                    .padding(vertical = 8.dp)
+            )
+        }
     }
+
 }
 
 @Preview
@@ -146,6 +161,7 @@ fun PoiCardPreview() {
         title = "234",
         latitude = 41.403706,
         longitude = 2.173504,
+        image = ""
     )
     AppTheme {
         PoiCard(poi = poi)
@@ -160,12 +176,14 @@ fun PoiCardListPreview() {
         title = "Sagrada Família",
         latitude = 41.403706,
         longitude = 2.173504,
+        image = ""
     )
     val poi2 = Poi(
         id = 2,
         title = "Casa Batlló",
         latitude = 41.391902536329894,
         longitude = 2.1649997898845004,
+        image = ""
     )
     AppTheme {
         PoiListContent(state = PoiListState.Success(listOf(poi1, poi2)), {}, {})

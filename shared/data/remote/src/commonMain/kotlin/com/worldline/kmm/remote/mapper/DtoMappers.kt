@@ -8,5 +8,6 @@ internal fun PoiDto.toModel() = Poi(
     id = id.toLongOrNull() ?: throw Error.Poi.InvalidId,
     title = title,
     latitude = geocoordinates.split(",")[0].toDoubleOrNull() ?: throw Error.Poi.InvalidCoordinates,
-    longitude = geocoordinates.split(",")[1].toDoubleOrNull() ?: throw Error.Poi.InvalidCoordinates
+    longitude = geocoordinates.split(",")[1].toDoubleOrNull() ?: throw Error.Poi.InvalidCoordinates,
+    image = image
 )

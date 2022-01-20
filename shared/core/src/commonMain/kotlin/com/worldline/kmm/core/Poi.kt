@@ -4,5 +4,6 @@ data class Poi(
     val id: Long,
     val title: String,
     val latitude: Double,
-    val longitude: Double
+    val longitude: Double,
+    val image: String
 )

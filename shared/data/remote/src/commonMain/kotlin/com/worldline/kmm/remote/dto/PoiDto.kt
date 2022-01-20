@@ -6,5 +6,6 @@ import kotlinx.serialization.Serializable
 class PoiDto(
     val id: String,
     val title: String,
-    val geocoordinates: String
+    val geocoordinates: String,
+    val image: String
 )

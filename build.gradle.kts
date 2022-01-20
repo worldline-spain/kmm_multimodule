@@ -32,8 +32,6 @@ allprojects {
                 create<BasicAuthentication>("basic")
             }
         }
-        maven(url = "https://kotlin.bintray.com/kotlinx")
-        maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
     }
 }
 

@@ -31,6 +31,9 @@ dependencies {
         implementation(constraintLayout)
         implementation(navigationFragment)
         implementation(mapbox)
+        implementation(coil) {
+            exclude(group = "org.jetbrains.kotlinx")
+        }
     }
 
     with(Dependencies.DI) {
@@ -76,6 +79,11 @@ android {
     buildFeatures {
         compose = true
         viewBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     composeOptions {

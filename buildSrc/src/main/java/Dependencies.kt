@@ -23,7 +23,7 @@ object Versions {
     const val kotlin = "1.5.30"
     val versionCode = getVersionNumber()
     const val versionName = "1.1.1"
-    const val coroutines = "1.5.2-native-mt"
+    const val coroutines = "1.6.0"
     const val serialization = "1.2.2"
     const val ktor = "1.6.4"
     const val koin = "3.1.2"
@@ -34,6 +34,7 @@ object Versions {
     const val multiplatformSettings = "0.8"
     const val arrow = "1.0.0"
     const val mapbox = "10.2.0"
+    const val coil = "1.4.0"
 
     //Jetpack Compose
     const val compose = "1.0.3"
@@ -79,6 +80,7 @@ object Dependencies {
         const val material = "com.google.android.material:material:1.4.0"
         const val coroutines = Shared.Ui.Android.coroutines
         const val mapbox = "com.mapbox.maps:android:${Versions.mapbox}"
+        const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
     }
 
     object DI {

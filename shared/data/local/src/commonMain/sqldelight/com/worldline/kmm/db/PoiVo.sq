@@ -2,7 +2,8 @@ CREATE TABLE PoiVo (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     latitude REAL NOT NULL,
-    longitude REAL NOT NULL
+    longitude REAL NOT NULL,
+    image TEXT NOT NULL
 );
 
 getAll:
