@@ -4,7 +4,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.*
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -54,29 +57,20 @@ fun PoiListContent(
     onNavigationEvent: (NavigationEvent) -> Unit
 ) {
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = stringResource(R.string.poi_list_title),
-                        style = MaterialTheme.typography.h5,
-                        color = MaterialTheme.colors.secondary
-                    )
-                },
-                backgroundColor = MaterialTheme.colors.primary,
-            )
-        },
         content = {
             when (state) {
                 is PoiListState.InProgress -> LoadingView()
                 is PoiListState.Success -> PoiListSuccessView(state, onNavigationEvent)
                 is PoiListState.Error -> EmptyView()
             }
-        })
+        }
+    )
 
     LaunchedEffect(Unit) {
         onEvent(PoiListEvent.Attach)
     }
+
+
 }
 
 @Composable
@@ -118,15 +112,8 @@ private fun PoiListSuccessView(
     LazyColumn(
         Modifier
             .fillMaxSize()
-            .padding(
-                all = 16.dp
-            )
     ) {
-        items(poisResponse.pois) { poi ->
-            Button(onClick = { onNavigationEvent(NavigationEvent.Detail(poi.id)) }) {
-                PoiCard(poi = poi)
-            }
-        }
+        items(poisResponse.pois) { poi -> PoiCard(poi = poi) }
     }
 }
 
@@ -138,7 +125,6 @@ fun PoiCard(poi: Poi) {
             style = MaterialTheme.typography.h5.copy(color = MaterialTheme.colors.secondary),
             modifier = Modifier
                 .align(Alignment.CenterVertically)
-                .background(MaterialTheme.colors.primary)
                 .padding(vertical = 8.dp)
         )
     }
