@@ -42,18 +42,6 @@ fun HomeContent(
 ) {
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = stringResource(R.string.poi_list_title),
-                        style = MaterialTheme.typography.h5,
-                        color = MaterialTheme.colors.secondary
-                    )
-                },
-                backgroundColor = MaterialTheme.colors.primary,
-            )
-        },
         bottomBar = { HomeBottomBar(onEvent) },
     ) {
         Box(modifier = Modifier.padding(it)) {

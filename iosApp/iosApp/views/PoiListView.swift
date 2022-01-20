@@ -1,17 +1,28 @@
 import SwiftUI
 import PoiUI
 
+class PoiListProxy: ObservableObject {
+    var viewModel = PoiListViewModel()
+    
+    @Published var state: PoiListState = PoiListState.InProgress()
+    
+    init() {
+        viewModel.observe(viewModel.state) { newState in
+            self.state = newState as! PoiListState
+        }
+    }
+}
+
 struct PoiListView: View {
 
-  @ObservedObject var viewModel = PoiListViewModel()
+  @ObservedObject var proxy = PoiListProxy()
 
   var body: some View {
-    let viewState = observable.state
-    PoiListScreen(state: viewState)
+      PoiListScreen(state: proxy.state)
       .onAppear(perform: {
-        observable.viewModel.attach()
+          proxy.viewModel.onEvent(event: PoiListEvent.Attach())
       }).onDisappear(perform: {
-        observable.viewModel.detach()
+          proxy.viewModel.detach()
       })
 
   }

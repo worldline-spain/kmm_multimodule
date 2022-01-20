@@ -4,8 +4,9 @@ import com.worldline.kmm.viewmodel.RootViewModel
 import com.worldline.kmm.viewmodel.ViewState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import org.koin.core.component.KoinComponent
 
-class HomeViewModel : RootViewModel<HomeState>() {
+class HomeViewModel : RootViewModel<HomeState>(), KoinComponent {
 
     private val _uiState = MutableStateFlow<HomeState>(HomeState.List)
 
