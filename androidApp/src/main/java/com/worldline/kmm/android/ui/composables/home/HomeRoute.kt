@@ -16,6 +16,7 @@ import com.worldline.kmm.android.R
 import com.worldline.kmm.android.exhaustive
 import com.worldline.kmm.android.ui.composables.poilist.PoiListRoute
 import com.worldline.kmm.android.ui.composables.poilist.stateWithLifecycle
+import com.worldline.kmm.android.ui.composables.poimap.PoiMapRoute
 import com.worldline.kmm.home.logic.HomeEvent
 import com.worldline.kmm.home.logic.HomeState
 import com.worldline.kmm.home.logic.HomeViewModel
@@ -58,7 +59,7 @@ fun HomeContent(
         Box(modifier = Modifier.padding(it)) {
             when (state) {
                 HomeState.List -> PoiListRoute(onNavigationEvent = onNavigationEvent)
-                HomeState.Map -> Text(text = "Map")
+                HomeState.Map -> PoiMapRoute()
             }.exhaustive
         }
     }

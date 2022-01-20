@@ -1,3 +1,4 @@
+import org.gradle.api.Project
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -6,6 +7,17 @@ fun getVersionNumber(): Int {
     val versionNumber = dateFormat.format(Date())
     return versionNumber.toInt()
 }
+
+fun Project.getLocalProperty(name: String): String {
+    val localProperties = java.util.Properties()
+    localProperties
+        .load(rootProject.file("local.properties").inputStream())
+
+    return localProperties.getOrElse(name) {
+        throw IllegalArgumentException("Define $name in your local.properties file")
+    } as String
+}
+
 
 object Versions {
     const val kotlin = "1.5.30"

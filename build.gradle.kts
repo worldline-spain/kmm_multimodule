@@ -21,32 +21,21 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven(url = "https://kotlin.bintray.com/kotlinx")
-        maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
         maven {
             url = uri("https://api.mapbox.com/downloads/v2/releases/maven")
             credentials {
                 username = "mapbox"
                 password =
-                    System.getenv("MAPBOX_API_KEY") ?: getLocalProperty("MAPBOX_API_KEY")
+                    System.getenv("MAPBOX_DOWNLOAD_KEY") ?: getLocalProperty("MAPBOX_DOWNLOAD_KEY")
             }
             authentication {
                 create<BasicAuthentication>("basic")
             }
         }
+        maven(url = "https://kotlin.bintray.com/kotlinx")
+        maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
     }
 }
-
-fun getLocalProperty(name: String): String {
-    val localProperties = java.util.Properties()
-    localProperties
-        .load(project.rootProject.file("local.properties").inputStream())
-
-    return localProperties.getOrElse(name) {
-        throw IllegalArgumentException("Define $name in your local.properties file")
-    } as String
-}
-
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)

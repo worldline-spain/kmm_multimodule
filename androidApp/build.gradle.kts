@@ -56,11 +56,17 @@ dependencies {
 android {
     compileSdkVersion(31)
     defaultConfig {
-        applicationId = "com.worldline.nespresso.android"
+        applicationId = "com.worldline.kmm.android"
         minSdkVersion(23)
         targetSdkVersion(31)
         versionCode = 1
         versionName = "1.0"
+
+        resValue(
+            "string",
+            "mapbox_access_token",
+            System.getenv("MAPBOX_API_KEY") ?: getLocalProperty("MAPBOX_API_KEY")
+        )
     }
     buildTypes {
         getByName("release") {
