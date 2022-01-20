@@ -74,7 +74,7 @@ fun PoiListContent(
 }
 
 @Composable
-private fun LoadingView() {
+fun LoadingView() {
     Box(
         modifier = Modifier
             .background(color = MaterialTheme.colors.primary)
@@ -89,7 +89,7 @@ private fun LoadingView() {
 }
 
 @Composable
-private fun EmptyView() {
+fun EmptyView() {
     Box(
         modifier = Modifier
             .fillMaxSize()
