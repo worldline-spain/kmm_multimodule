@@ -6,4 +6,5 @@ target 'iosApp' do
   pod 'remote', :path => '../shared/data/remote'
   pod 'poirepository', :path => '../shared/feature/poi/poirepository'
   pod 'poiui', :path => '../shared/feature/poi/poiui'
+  pod 'homeui', :path => '../shared/feature/home/homeui'
 end

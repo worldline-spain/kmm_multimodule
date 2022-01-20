@@ -3,7 +3,7 @@ import PoiUI
 
 struct PoiListView: View {
 
-  @ObservedObject var observable = ObservableViewModel<PoiListViewModel, PoiListState>(viewModel: PoiListViewModel())
+  @ObservedObject var viewModel = PoiListViewModel()
 
   var body: some View {
     let viewState = observable.state
