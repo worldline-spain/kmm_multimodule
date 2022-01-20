@@ -1,4 +1,4 @@
-package com.worldline.kmm.android.ui.home.poidetail
+package com.worldline.kmm.android.ui.composables.poidetail
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable

@@ -1,4 +1,4 @@
-package com.worldline.kmm.android.ui.home.poilist
+package com.worldline.kmm.android.ui.composables.poilist
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*

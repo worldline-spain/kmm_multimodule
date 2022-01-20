@@ -1,4 +1,5 @@
 import Dependencies.Modules
+import Dependencies.Modules.Home
 import Dependencies.Modules.Poi
 
 plugins {
@@ -16,6 +17,10 @@ dependencies {
             implementation(project(repository))
             implementation(project(remote))
             implementation(project(local))
+        }
+
+        with(Home) {
+            implementation(project(ui))
         }
     }
 

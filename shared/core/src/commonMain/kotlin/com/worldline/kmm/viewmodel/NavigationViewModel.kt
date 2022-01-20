@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.StateFlow
 
 class NavigationViewModel : RootViewModel<NavigationState>() {
 
-    private val _uiState = MutableStateFlow<NavigationState>(NavigationState.Home.List)
+    private val _uiState = MutableStateFlow<NavigationState>(NavigationState.Home)
 
     override val state: StateFlow<NavigationState> = _uiState
 
@@ -14,27 +14,18 @@ class NavigationViewModel : RootViewModel<NavigationState>() {
     }
 
     fun onEvent(screen: NavigationEvent) = when (screen) {
-        NavigationEvent.Home.List -> _uiState.value = NavigationState.Home.List
-        NavigationEvent.Home.Map -> _uiState.value = NavigationState.Home.Map
+        NavigationEvent.Home -> _uiState.value = NavigationState.Home
         is NavigationEvent.Detail -> _uiState.value = NavigationState.Detail(screen.id)
     }
 }
 
 sealed class NavigationState : ViewState() {
-    sealed class Home : NavigationState() {
-        object List : Home()
-        object Map : Home()
-    }
-
+    object Home : NavigationState()
     data class Detail(val id: Long) : NavigationState()
 }
 
 sealed class NavigationEvent(val route: String) {
-    sealed class Home(route: String) : NavigationEvent(route) {
-        object List : Home("home/list")
-        object Map : Home("home/map")
-    }
-
+    object Home : NavigationEvent("home")
     data class Detail(val id: Long = 0) : NavigationEvent("detail/{poiId}") {
         fun createRoute() = "detail/$id"
     }
