@@ -21,6 +21,7 @@ object Versions {
     const val klock = "2.4.1"
     const val multiplatformSettings = "0.8"
     const val arrow = "1.0.0"
+    const val mapbox = "10.2.0"
 
     //Jetpack Compose
     const val compose = "1.0.3"
@@ -65,6 +66,7 @@ object Dependencies {
         const val recycler = "androidx.recyclerview:recyclerview:1.2.0"
         const val material = "com.google.android.material:material:1.4.0"
         const val coroutines = Shared.Ui.Android.coroutines
+        const val mapbox = "com.mapbox.maps:android:${Versions.mapbox}"
     }
 
     object DI {

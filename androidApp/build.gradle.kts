@@ -30,6 +30,7 @@ dependencies {
         implementation(appCompat)
         implementation(constraintLayout)
         implementation(navigationFragment)
+        implementation(mapbox)
     }
 
     with(Dependencies.DI) {
