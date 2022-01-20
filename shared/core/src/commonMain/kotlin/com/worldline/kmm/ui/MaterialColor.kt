@@ -2,9 +2,9 @@ package com.worldline.kmm.ui
 
 
 enum class MaterialColor(
-    val tones: Map<Int, Int> = emptyMap(),
-    val accentTones: Map<Int, Int> = emptyMap(),
-    val singleColor: Int? = null
+    private val tones: Map<Int, Int> = emptyMap(),
+    private val accentTones: Map<Int, Int> = emptyMap(),
+    private val singleColor: Int? = null
 ) {
     RED(
         tones = mapOf(
@@ -371,7 +371,7 @@ enum class MaterialColor(
     BLACK(singleColor = COLOR_BLACK),
     WHITE(singleColor = COLOR_WHITE);
 
-    val accent = object {
+    private val accent = object {
         operator fun get(tone: Int): Int =
             singleColor ?: getAccent(tone) ?: getTone(tone) ?: COLOR_BLACK
 
@@ -381,15 +381,15 @@ enum class MaterialColor(
     operator fun get(tone: Int): Int = singleColor ?: getTone(tone) ?: COLOR_BLACK
     operator fun invoke(): Int = singleColor ?: getTone(500) ?: COLOR_BLACK
 
-    fun getTone(tone: Int): Int? =
+    private fun getTone(tone: Int): Int? =
         if (tones.isEmpty()) null
         else tones[tone] ?: interpolate(tones, tone)
 
-    fun getAccent(tone: Int): Int? =
+    private fun getAccent(tone: Int): Int? =
         if (accentTones.isEmpty()) null
         else accentTones[tone] ?: interpolate(accentTones, tone)
 
-    fun interpolate(tones: Map<Int, Int>, tone: Int): Int {
+    private fun interpolate(tones: Map<Int, Int>, tone: Int): Int {
         val lowTone = tones.keys.filter { tone >= it }.maxOrNull() ?: 0
         val highTone = tones.keys.filter { tone <= it }.minOrNull() ?: 1000
         val lowColor = tones[lowTone] ?: COLOR_WHITE
@@ -401,9 +401,9 @@ enum class MaterialColor(
         )
     }
 
-    fun withAlpha(tone: Int, alpha: Int): Long {
+    fun tone(tone: Int, alpha: Int = 100): Long {
         val colorTone =
-            tones[tone]?.toLong() ?: throw IllegalArgumentException("Tone $tone not fount")
+            tones[tone]?.toLong() ?: throw IllegalArgumentException("Tone $tone not found")
         return colorTone + when (alpha) {
             100 -> 0xFF000000
             95 -> 0xF2000000
@@ -432,7 +432,7 @@ enum class MaterialColor(
 
     }
 
-    fun interpolateChannel(
+    private fun interpolateChannel(
         lowTone: Int,
         highTone: Int,
         tone: Int,

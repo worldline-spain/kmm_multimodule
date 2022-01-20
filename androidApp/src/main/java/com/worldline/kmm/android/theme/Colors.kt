@@ -6,9 +6,9 @@ import androidx.compose.ui.graphics.Color
 import com.worldline.kmm.ui.MaterialColor
 
 /** Colors **/
-val colorPrimary = Color(MaterialColor.INDIGO.withAlpha(500, 100))
-val colorPrimaryDark = Color(MaterialColor.INDIGO.withAlpha(800, 100))
-val colorAccent = Color(MaterialColor.AMBER.withAlpha(500, 100))
+val colorPrimary = Color(MaterialColor.INDIGO.tone(500))
+val colorPrimaryDark = Color(MaterialColor.INDIGO.tone(800))
+val colorAccent = Color(MaterialColor.AMBER.tone(500))
 
 val LightColors = lightColors(
     primary = colorPrimary,
