@@ -2,6 +2,7 @@ package com.worldline.kmm.android.ui.composables.poilist
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -113,16 +114,20 @@ private fun PoiListSuccessView(
         Modifier
             .fillMaxSize()
     ) {
-        items(poisResponse.pois) { poi -> PoiCard(poi = poi) }
+        items(poisResponse.pois) { poi -> PoiCard(poi = poi, onNavigationEvent) }
     }
 }
 
 @Composable
-fun PoiCard(poi: Poi) {
+fun PoiCard(
+    poi: Poi,
+    onNavigationEvent: (NavigationEvent) -> Unit = {}
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(all = 4.dp)
+            .clickable { onNavigationEvent(NavigationEvent.Detail(poi.id)) }
     ) {
         Row {
             Image(
