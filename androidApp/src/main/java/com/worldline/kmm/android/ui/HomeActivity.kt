@@ -10,8 +10,6 @@ class HomeActivity : RootActivity() {
     @ExperimentalComposeUiApi
     @Composable
     override fun BuildUI() {
-        AppTheme {
-            PoiApp()
-        }
+        PoiApp()
     }
 }
