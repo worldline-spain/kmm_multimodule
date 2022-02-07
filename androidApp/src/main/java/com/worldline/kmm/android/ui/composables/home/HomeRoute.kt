@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -71,7 +72,7 @@ fun HomeBottomBar(onEvent: (HomeEvent) -> Unit) {
         BottomNavigationItem(
             selected = false,
             onClick = { onEvent(HomeEvent.Map) },
-            icon = { Icon(Icons.Filled.List, contentDescription = "Test") },
+            icon = { Icon(Icons.Filled.LocationOn, contentDescription = "Test") },
             label = { Text(text = "Map") }
         )
     }
