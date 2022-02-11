@@ -2,12 +2,48 @@
   "object": {
     "pins": [
       {
-        "package": "BottomBar-SwiftUI",
-        "repositoryURL": "https://github.com/smartvipere75/bottombar-swiftui",
+        "package": "MapboxCommon",
+        "repositoryURL": "https://github.com/mapbox/mapbox-common-ios.git",
         "state": {
-          "branch": "master",
-          "revision": "838ce6316f8282467ebd00cf4d9706dc58978633",
-          "version": null
+          "branch": null,
+          "revision": "d0adb996dfad19ed1edc611ee640e6c7506951a0",
+          "version": "21.1.0"
+        }
+      },
+      {
+        "package": "MapboxCoreMaps",
+        "repositoryURL": "https://github.com/mapbox/mapbox-core-maps-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "f346a9880cf92ea5e8bc15a4034bb18d3d4c079c",
+          "version": "10.3.2"
+        }
+      },
+      {
+        "package": "MapboxMobileEvents",
+        "repositoryURL": "https://github.com/mapbox/mapbox-events-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "1b6c2a34086de40c26f2f97a716ac419f46eb630",
+          "version": "1.0.7"
+        }
+      },
+      {
+        "package": "MapboxMaps",
+        "repositoryURL": "https://github.com/mapbox/mapbox-maps-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "47f9d2da9acea04e79244949328c3a9d10f39945",
+          "version": "10.3.0"
+        }
+      },
+      {
+        "package": "Turf",
+        "repositoryURL": "https://github.com/mapbox/turf-swift.git",
+        "state": {
+          "branch": null,
+          "revision": "436682278bd65a1dbfbad53902af6f4cc0af1a33",
+          "version": "2.2.0"
         }
       }
     ]

@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 import HomeUI
+import Combine
 
 class HomeProxy: ObservableObject {
     var viewModel = HomeViewModel()
@@ -40,31 +41,47 @@ struct HomeRoute: View {
 }
 
 struct HomeContent: View {
-
+    
     var state: HomeState
     var onEvent: (HomeEvent) -> Void
-
+    
+    @State private var selection: Int = 1
+    
     var body: some View {
-        
         VStack {
-            if state is HomeState.List {
-                Text("List")
-            } else {
-                Text("Map")
+            TabView(selection: $selection){
+                TabContainer(state: state)
+                    .tabItem(){
+                        Image(systemName: "list.bullet")
+                        Text("List")
+                    }.tag(1)
+                TabContainer(state: state)
+                    .tabItem(){
+                        Image(systemName: "map")
+                        Text("Map")
+                    }.tag(2)
             }
-            
-            HStack {
-                Button(action: {
+            .onReceive(Just(selection)) {
+                if $0 == 1 {
                     onEvent(HomeEvent.List())
-                }) {
-                    Text("List")
-                }
-                Button(action: {
+                } else if $0 == 2 {
                     onEvent(HomeEvent.Map())
-                }) {
-                    Text("Map")
                 }
             }
+        }
+    }
+}
+
+
+struct TabContainer: View {
+    
+    var state: HomeState
+    
+    var body: some View {
+        if state is HomeState.List {
+            PoiListView()
+        } else {
+            MapBoxMapView()
         }
     }
 }

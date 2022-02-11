@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		4933F6672799B2980083CE39 /* HomeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933F6662799B2980083CE39 /* HomeRoute.swift */; };
-		4933F66A2799B5530083CE39 /* BottomBar-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4933F6692799B5530083CE39 /* BottomBar-SwiftUI */; };
+		655E130427B68B62009430E5 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 655E130327B68B62009430E5 /* MapboxMaps */; };
+		655E130627B68D3B009430E5 /* MapBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655E130527B68D3B009430E5 /* MapBoxView.swift */; };
 		7555FF83242A565900829871 /* PoiListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* PoiListView.swift */; };
 		F728394427DD2E2CE034A763 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E015B6C6FF79455F7ABDFA47 /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
@@ -18,6 +19,7 @@
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		2E7F97A2A7200CFB23882A68 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4933F6662799B2980083CE39 /* HomeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoute.swift; sourceTree = "<group>"; };
+		655E130527B68D3B009430E5 /* MapBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxView.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* PoiListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiListView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -30,8 +32,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				655E130427B68B62009430E5 /* MapboxMaps in Frameworks */,
 				F728394427DD2E2CE034A763 /* Pods_iosApp.framework in Frameworks */,
-				4933F66A2799B5530083CE39 /* BottomBar-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +62,7 @@
 			children = (
 				4933F6652799B2850083CE39 /* home */,
 				7555FF82242A565900829871 /* PoiListView.swift */,
+				655E130527B68D3B009430E5 /* MapBoxView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -119,7 +122,7 @@
 			);
 			name = iosApp;
 			packageProductDependencies = (
-				4933F6692799B5530083CE39 /* BottomBar-SwiftUI */,
+				655E130327B68B62009430E5 /* MapboxMaps */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* iosApp.app */;
@@ -150,7 +153,7 @@
 			);
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
-				4933F6682799B5530083CE39 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */,
+				655E130227B68B62009430E5 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				655E130627B68D3B009430E5 /* MapBoxView.swift in Sources */,
 				4933F6672799B2980083CE39 /* HomeRoute.swift in Sources */,
 				7555FF83242A565900829871 /* PoiListView.swift in Sources */,
 			);
@@ -415,21 +419,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4933F6682799B5530083CE39 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */ = {
+		655E130227B68B62009430E5 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/smartvipere75/bottombar-swiftui";
+			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4933F6692799B5530083CE39 /* BottomBar-SwiftUI */ = {
+		655E130327B68B62009430E5 /* MapboxMaps */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4933F6682799B5530083CE39 /* XCRemoteSwiftPackageReference "bottombar-swiftui" */;
-			productName = "BottomBar-SwiftUI";
+			package = 655E130227B68B62009430E5 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			productName = MapboxMaps;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
