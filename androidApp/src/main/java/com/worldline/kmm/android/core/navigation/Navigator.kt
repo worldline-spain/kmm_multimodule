@@ -30,7 +30,7 @@ fun PoiApp(navController: NavHostController = rememberNavController()) {
         }
 
         composable(route = Detail().route) {
-            PoiDetailRoute(poiId = it.arguments!!.getString("poiId")!!.toLong())
+            PoiDetailRoute(poiId = it.arguments!!.getString("poiId")!!.toLong(), navController = navController)
         }
     }
 
