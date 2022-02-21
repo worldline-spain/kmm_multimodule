@@ -48,7 +48,7 @@ fun HomeContent(
         Box(modifier = Modifier.padding(it)) {
             when (state) {
                 HomeState.List -> PoiListRoute(onNavigationEvent = onNavigationEvent)
-                HomeState.Map -> PoiMapRoute()
+                HomeState.Map -> PoiMapRoute(onNavigationEvent = onNavigationEvent)
             }.exhaustive
         }
     }

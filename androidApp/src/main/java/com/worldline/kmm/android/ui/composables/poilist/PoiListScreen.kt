@@ -42,26 +42,24 @@ fun <V : ViewState> RootViewModel<V>.stateWithLifecycle(): State<V> {
 
 @Composable
 fun PoiListRoute(onNavigationEvent: (NavigationEvent) -> Unit) {
-    val viewModel = remember { PoiListViewModel() }
+    val viewModel = remember { PoiListViewModel(onNavigationEvent) }
 
     PoiListContent(
         state = viewModel.stateWithLifecycle().value,
-        onEvent = { viewModel.onEvent(it) },
-        onNavigationEvent = onNavigationEvent
+        onEvent = { viewModel.onEvent(it) }
     )
 }
 
 @Composable
 fun PoiListContent(
     state: PoiListState,
-    onEvent: (PoiListEvent) -> Unit,
-    onNavigationEvent: (NavigationEvent) -> Unit
+    onEvent: (PoiListEvent) -> Unit
 ) {
     Scaffold(
         content = {
             when (state) {
                 is PoiListState.InProgress -> LoadingView()
-                is PoiListState.Success -> PoiListSuccessView(state, onNavigationEvent)
+                is PoiListState.Success -> PoiListSuccessView(state, onEvent)
                 is PoiListState.Error -> EmptyView()
             }
         }
@@ -108,26 +106,26 @@ fun EmptyView() {
 @Composable
 private fun PoiListSuccessView(
     poisResponse: PoiListState.Success,
-    onNavigationEvent: (NavigationEvent) -> Unit,
+    onEvent: (PoiListEvent) -> Unit,
 ) {
     LazyColumn(
         Modifier
             .fillMaxSize()
     ) {
-        items(poisResponse.pois) { poi -> PoiCard(poi = poi, onNavigationEvent) }
+        items(poisResponse.pois) { poi -> PoiCard(poi = poi, onEvent = onEvent) }
     }
 }
 
 @Composable
 fun PoiCard(
     poi: Poi,
-    onNavigationEvent: (NavigationEvent) -> Unit = {}
+    onEvent: (PoiListEvent) -> Unit = {}
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(all = 4.dp)
-            .clickable { onNavigationEvent(NavigationEvent.Detail(poi.id)) }
+            .clickable { onEvent(PoiListEvent.OnItemClick(poi = poi)) }
     ) {
         Row {
             Image(
@@ -191,6 +189,6 @@ fun PoiCardListPreview() {
         image = ""
     )
     AppTheme {
-        PoiListContent(state = PoiListState.Success(listOf(poi1, poi2)), {}, {})
+        PoiListContent(state = PoiListState.Success(listOf(poi1, poi2)), {})
     }
 }

@@ -29,6 +29,7 @@ import com.worldline.kmm.core.Poi
 import com.worldline.kmm.ui.logic.poilistvm.PoiDetailEvent
 import com.worldline.kmm.ui.logic.poilistvm.PoiDetailState
 import com.worldline.kmm.ui.logic.poilistvm.PoiDetailViewModel
+import com.worldline.kmm.viewmodel.NavigationEvent
 
 @Composable
 fun PoiDetailRoute(poiId: Long, navController : NavController) {
@@ -38,7 +39,7 @@ fun PoiDetailRoute(poiId: Long, navController : NavController) {
     PoiDetailContent(
         state = viewModel.stateWithLifecycle().value,
         onEvent = { viewModel.onEvent(it) },
-        navController = navController
+        navController = navController,
     )
 }
 

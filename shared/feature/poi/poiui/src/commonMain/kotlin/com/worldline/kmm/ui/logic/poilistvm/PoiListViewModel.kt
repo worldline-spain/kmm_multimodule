@@ -2,6 +2,7 @@ package com.worldline.kmm.ui.logic.poilistvm
 
 import com.worldline.kmm.core.Poi
 import com.worldline.kmm.feature.poi.PoiRepository
+import com.worldline.kmm.viewmodel.NavigationEvent
 import com.worldline.kmm.viewmodel.RootViewModel
 import com.worldline.kmm.viewmodel.ViewState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,7 +11,8 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class PoiListViewModel : RootViewModel<PoiListState>(), KoinComponent {
+class PoiListViewModel(private val onNavigationEvent: (NavigationEvent) -> Unit) :
+    RootViewModel<PoiListState>(), KoinComponent {
 
     private val poiRepository: PoiRepository by inject()
 
@@ -20,7 +22,7 @@ class PoiListViewModel : RootViewModel<PoiListState>(), KoinComponent {
 
     fun onEvent(event: PoiListEvent) = when (event) {
         PoiListEvent.Attach -> attach()
-        is PoiListEvent.OnItemClick -> TODO("todo")
+        is PoiListEvent.OnItemClick -> onNavigationEvent(NavigationEvent.Detail(event.poi.id))
     }
 
     override fun attach() {
