@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.runtime.Composable
@@ -43,6 +44,7 @@ fun HomeContent(
 ) {
 
     Scaffold(
+        topBar = { TopAppBar(title = { Text(text = "KMM Android Jetpack Compose") }) },
         bottomBar = { HomeBottomBar(onEvent) },
     ) {
         Box(modifier = Modifier.padding(it)) {
