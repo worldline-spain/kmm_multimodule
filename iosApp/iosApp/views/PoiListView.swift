@@ -2,7 +2,10 @@ import SwiftUI
 import PoiUI
 
 class PoiListProxy: ObservableObject {
-    var viewModel = PoiListViewModel()
+    
+    var viewModel = PoiListViewModel(onNavigationEvent: { navigationEvent in
+        print("Event: \(navigationEvent)")
+    })
     
     @Published var state: PoiListState = PoiListState.InProgress()
     
@@ -18,14 +21,12 @@ struct PoiListView: View {
     @ObservedObject var proxy = PoiListProxy()
     
     var body: some View {
-        PoiListScreen(state: proxy.state, onEvent: { event in
-            proxy.viewModel.onEvent(event: event)
-        })
-        .onAppear(perform: {
-            proxy.viewModel.onEvent(event: PoiListEvent.Attach())
-        }).onDisappear(perform: {
-            proxy.viewModel.detach()
-        })
+        PoiListScreen(state: proxy.state, onEvent: {event in proxy.viewModel.onEvent(event: event) })
+            .onAppear(perform: {
+                proxy.viewModel.onEvent(event: PoiListEvent.Attach())
+            }).onDisappear(perform: {
+                proxy.viewModel.detach()
+            })
         
     }
 }
@@ -51,9 +52,9 @@ struct PoiListScreen: View {
 struct PoiListContent: View {
     
     var pois: [CorePoi] = []
-    var onEvent: (NavigationEvent) -> Void
+    var onEvent: (PoiListEvent) -> Void
     
-    init(pois: [CorePoi], onEvent: @escaping (NavigationEvent) -> Void) {
+    init(pois: [CorePoi], onEvent: @escaping (PoiListEvent) -> Void) {
         self.pois.removeAll()
         self.pois.append(contentsOf: pois)
         self.onEvent = onEvent
@@ -64,9 +65,11 @@ struct PoiListContent: View {
             ForEach(pois, id: \.self.id) { poi in
                 HStack {
                     Text(poi.title)
+                    Spacer()
                 }.padding()
+                .contentShape(Rectangle())
                 .onTapGesture {
-                    onEvent(NavigationEvent.OnItemClick(poi: poi))
+                    self.onEvent(PoiListEvent.OnItemClick(poi: poi))
                 }
             }
         }
@@ -77,6 +80,7 @@ struct PoiListContent: View {
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        PoiListView()
+        PoiListContent(pois: [CorePoi(id: 1, title: "Title", latitude: 0.0, longitude: 0.0, image: "")]) { PoiListEvent in
+        }
     }
 }

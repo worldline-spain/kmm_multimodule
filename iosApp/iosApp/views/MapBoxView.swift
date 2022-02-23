@@ -11,7 +11,10 @@ import MapboxMaps
 import PoiUI
 
 class PoiMapProxy: ObservableObject {
-    var viewModel = PoiListViewModel()
+    
+    var viewModel = PoiListViewModel(onNavigationEvent: { navigationEvent in
+        print("Event: \(navigationEvent)")
+    })
     
     @Published var state: PoiListState = PoiListState.InProgress()
     
