@@ -11,6 +11,7 @@
 		4933F6672799B2980083CE39 /* HomeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933F6662799B2980083CE39 /* HomeRoute.swift */; };
 		655E130427B68B62009430E5 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 655E130327B68B62009430E5 /* MapboxMaps */; };
 		655E130627B68D3B009430E5 /* MapBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655E130527B68D3B009430E5 /* MapBoxView.swift */; };
+		65C1F64727C3E58800A96A5E /* PoiDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C1F64627C3E58800A96A5E /* PoiDetailView.swift */; };
 		7555FF83242A565900829871 /* PoiListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* PoiListView.swift */; };
 		F728394427DD2E2CE034A763 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E015B6C6FF79455F7ABDFA47 /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
@@ -20,6 +21,7 @@
 		2E7F97A2A7200CFB23882A68 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4933F6662799B2980083CE39 /* HomeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoute.swift; sourceTree = "<group>"; };
 		655E130527B68D3B009430E5 /* MapBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBoxView.swift; sourceTree = "<group>"; };
+		65C1F64627C3E58800A96A5E /* PoiDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiDetailView.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* PoiListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiListView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,11 +62,20 @@
 		499C55DE2756429D00B046AB /* views */ = {
 			isa = PBXGroup;
 			children = (
+				65C1F64527C3E57500A96A5E /* detail */,
 				4933F6652799B2850083CE39 /* home */,
 				7555FF82242A565900829871 /* PoiListView.swift */,
 				655E130527B68D3B009430E5 /* MapBoxView.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		65C1F64527C3E57500A96A5E /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				65C1F64627C3E58800A96A5E /* PoiDetailView.swift */,
+			);
+			path = detail;
 			sourceTree = "<group>";
 		};
 		7555FF72242A565900829871 = {
@@ -225,6 +236,7 @@
 				655E130627B68D3B009430E5 /* MapBoxView.swift in Sources */,
 				4933F6672799B2980083CE39 /* HomeRoute.swift in Sources */,
 				7555FF83242A565900829871 /* PoiListView.swift in Sources */,
+				65C1F64727C3E58800A96A5E /* PoiDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

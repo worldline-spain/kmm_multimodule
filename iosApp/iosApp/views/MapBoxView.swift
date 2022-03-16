@@ -27,7 +27,9 @@ class PoiMapProxy: ObservableObject {
 
 struct MapBoxMapView: UIViewControllerRepresentable {
     
-    @ObservedObject var proxy = PoiListProxy()
+    @ObservedObject var proxy = PoiListProxy { CoreNavigationEvent in
+        print("Fixme")
+    }
     
     func makeUIViewController(context: Context) -> MapViewController {
         proxy.viewModel.onEvent(event: PoiListEvent.Attach())

@@ -3,22 +3,26 @@ import PoiUI
 
 class PoiListProxy: ObservableObject {
     
-    var viewModel = PoiListViewModel(onNavigationEvent: { navigationEvent in
-        print("Event: \(navigationEvent)")
-    })
+    var viewModel : PoiListViewModel
     
     @Published var state: PoiListState = PoiListState.InProgress()
     
-    init() {
+    init(onNavigationEvent: @escaping (CoreNavigationEvent) -> Void) {
+        viewModel = PoiListViewModel(onNavigationEvent: onNavigationEvent)
         viewModel.observe(viewModel.state) { newState in
             self.state = newState as! PoiListState
         }
     }
+    
 }
 
 struct PoiListView: View {
     
-    @ObservedObject var proxy = PoiListProxy()
+    @ObservedObject var proxy : PoiListProxy
+    
+    init(onNavigationEvent: @escaping (CoreNavigationEvent) -> Void) {
+        self.proxy  = PoiListProxy(onNavigationEvent: onNavigationEvent)
+    }
     
     var body: some View {
         PoiListScreen(state: proxy.state, onEvent: {event in proxy.viewModel.onEvent(event: event) })
