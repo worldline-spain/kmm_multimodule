@@ -30,10 +30,11 @@ import com.worldline.kmm.core.Poi
 import com.worldline.kmm.ui.logic.poilistvm.PoiListEvent
 import com.worldline.kmm.ui.logic.poilistvm.PoiListState
 import com.worldline.kmm.ui.logic.poilistvm.PoiListViewModel
+import com.worldline.kmm.viewmodel.NavigationEvent
 
 @Composable
-fun PoiMapRoute() {
-    val viewModel = remember { PoiListViewModel() }
+fun PoiMapRoute(onNavigationEvent: (NavigationEvent) -> Unit) {
+    val viewModel = remember { PoiListViewModel(onNavigationEvent = onNavigationEvent) }
 
     PoiMapContent(viewModel.stateWithLifecycle().value, onEvent = viewModel::onEvent)
 }

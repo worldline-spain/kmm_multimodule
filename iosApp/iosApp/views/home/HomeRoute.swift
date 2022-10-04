@@ -9,6 +9,8 @@
 import Foundation
 import SwiftUI
 import HomeUI
+import Combine
+import core
 
 class HomeProxy: ObservableObject {
     var viewModel = HomeViewModel()
@@ -25,11 +27,13 @@ class HomeProxy: ObservableObject {
 struct HomeRoute: View {
     
     @ObservedObject var proxy = HomeProxy()
+    
+    var onNavigationEvent: (NavigationEvent) -> Void
 
     var body: some View {
         HomeContent(state: proxy.state, onEvent: { event in
             proxy.viewModel.onEvent(event: event)
-        })
+        }, onNavigationEvent: onNavigationEvent)
             .onAppear(perform: {
                 proxy.viewModel.onEvent(event: HomeEvent.Attach())
             }).onDisappear(perform: {
@@ -40,31 +44,53 @@ struct HomeRoute: View {
 }
 
 struct HomeContent: View {
-
+    
     var state: HomeState
     var onEvent: (HomeEvent) -> Void
 
+    var onNavigationEvent: (NavigationEvent) -> Void
+    
+    @State private var selection: Int = 1
+    
     var body: some View {
-        
         VStack {
-            if state is HomeState.List {
-                Text("List")
-            } else {
-                Text("Map")
+            TabView(selection: $selection){
+                TabContainer(state: state, onNavigationEvent: onNavigationEvent)
+                    .tabItem(){
+                        Image(systemName: "list.bullet")
+                        Text("List")
+                    }.tag(1)
+                TabContainer(state: state, onNavigationEvent: onNavigationEvent)
+                    .tabItem(){
+                        Image(systemName: "map")
+                        Text("Map")
+                    }.tag(2)
             }
-            
-            HStack {
-                Button(action: {
+            .onReceive(Just(selection)) {
+                if $0 == 1 {
                     onEvent(HomeEvent.List())
-                }) {
-                    Text("List")
-                }
-                Button(action: {
+                } else if $0 == 2 {
                     onEvent(HomeEvent.Map())
-                }) {
-                    Text("Map")
                 }
             }
+        }
+    }
+}
+
+
+struct TabContainer: View {
+    
+    var state: HomeState
+    
+    var onNavigationEvent: (NavigationEvent) -> Void
+    
+    var body: some View {
+        if state is HomeState.List {
+            PoiListView { coreNavigationEvent in
+                onNavigationEvent(NavigationEvent.Detail(id: 1))    // Fixme
+            }
+        } else {
+            MapBoxMapView()
         }
     }
 }

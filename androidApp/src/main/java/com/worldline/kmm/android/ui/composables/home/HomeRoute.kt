@@ -5,14 +5,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.worldline.kmm.android.R
 import com.worldline.kmm.android.exhaustive
 import com.worldline.kmm.android.ui.composables.poilist.PoiListRoute
 import com.worldline.kmm.android.ui.composables.poilist.stateWithLifecycle
@@ -42,12 +41,13 @@ fun HomeContent(
 ) {
 
     Scaffold(
+        topBar = { TopAppBar(title = { Text(text = "KMM Android Jetpack Compose") }) },
         bottomBar = { HomeBottomBar(onEvent) },
     ) {
         Box(modifier = Modifier.padding(it)) {
             when (state) {
                 HomeState.List -> PoiListRoute(onNavigationEvent = onNavigationEvent)
-                HomeState.Map -> PoiMapRoute()
+                HomeState.Map -> PoiMapRoute(onNavigationEvent = onNavigationEvent)
             }.exhaustive
         }
     }
@@ -71,7 +71,7 @@ fun HomeBottomBar(onEvent: (HomeEvent) -> Unit) {
         BottomNavigationItem(
             selected = false,
             onClick = { onEvent(HomeEvent.Map) },
-            icon = { Icon(Icons.Filled.List, contentDescription = "Test") },
+            icon = { Icon(Icons.Filled.LocationOn, contentDescription = "Test") },
             label = { Text(text = "Map") }
         )
     }
