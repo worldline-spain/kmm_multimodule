@@ -24,9 +24,12 @@ allprojects {
         maven {
             url = uri("https://api.mapbox.com/downloads/v2/releases/maven")
             credentials {
+                // Do not change the username below.
+                // This should always be `mapbox` (not your username).
                 username = "mapbox"
-                password =
-                    System.getenv("MAPBOX_DOWNLOAD_KEY") ?: getLocalProperty("MAPBOX_DOWNLOAD_KEY")
+                // Use the secret token you stored in gradle.properties as the password
+                val MAPBOX_DOWNLOADS_TOKEN: String by project
+                password = MAPBOX_DOWNLOADS_TOKEN
             }
             authentication {
                 create<BasicAuthentication>("basic")
@@ -72,12 +75,9 @@ abstract class KmmModuleGeneratorTask : DefaultTask() {
             version = "1.0"
             kotlin {
                 android()
-                val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget = when {
-                    System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
-                    System.getenv("NATIVE_ARCH")?.startsWith("arm") == true -> ::iosSimulatorArm64
-                    else -> ::iosX64
-                }
-                iosTarget("ios") {}
+                iosX64()
+                iosArm64()
+                iosSimulatorArm64()
                 cocoapods {
                     summary = TODO("Define the module Summary")
                     homepage = TODO("Define the module homepage")
@@ -94,8 +94,26 @@ abstract class KmmModuleGeneratorTask : DefaultTask() {
                     val commonTest by getting { dependencies {} }
                     val androidMain by getting { dependencies {} }
                     val androidTest by getting { dependencies {} }
-                    val iosMain by getting { dependencies {} }
-                    val iosTest by getting { dependencies {} }
+                    val iosX64Main by getting
+                    val iosArm64Main by getting
+                    val iosSimulatorArm64Main by getting
+                    val iosMain by creating {
+                        dependsOn(commonMain)
+                        iosX64Main.dependsOn(this)
+                        iosArm64Main.dependsOn(this)
+                        iosSimulatorArm64Main.dependsOn(this)
+                        dependencies {}
+                    }
+                    val iosX64Test by getting
+                    val iosArm64Test by getting
+                    val iosSimulatorArm64Test by getting
+                    val iosTest by creating {
+                        dependsOn(commonTest)
+                        iosX64Test.dependsOn(this)
+                        iosArm64Test.dependsOn(this)
+                        iosSimulatorArm64Test.dependsOn(this)
+                        dependencies {}
+                    }
                 }
             }
             android {

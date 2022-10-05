@@ -99,9 +99,9 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
-				499C55DE2756429D00B046AB /* views */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
+				499C55DE2756429D00B046AB /* views */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -125,7 +125,7 @@
 				7555FF77242A565900829871 /* Sources */,
 				7555FF79242A565900829871 /* Resources */,
 				129DAF13490D7B9491EBE488 /* Frameworks */,
-				E13BAA8C387C982D320133F5 /* [CP] Embed Pods Frameworks */,
+				E84F8539C0C9091F71C89957 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -164,7 +164,7 @@
 			);
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
-				655E130227B68B62009430E5 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
+				655E130227B68B62009430E5 /* XCRemoteSwiftPackageReference "mapbox-maps-ios.git" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -208,7 +208,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E13BAA8C387C982D320133F5 /* [CP] Embed Pods Frameworks */ = {
+		E84F8539C0C9091F71C89957 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -431,7 +431,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		655E130227B68B62009430E5 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
+		655E130227B68B62009430E5 /* XCRemoteSwiftPackageReference "mapbox-maps-ios.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios.git";
 			requirement = {
@@ -444,7 +444,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		655E130327B68B62009430E5 /* MapboxMaps */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 655E130227B68B62009430E5 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			package = 655E130227B68B62009430E5 /* XCRemoteSwiftPackageReference "mapbox-maps-ios.git" */;
 			productName = MapboxMaps;
 		};
 /* End XCSwiftPackageProductDependency section */

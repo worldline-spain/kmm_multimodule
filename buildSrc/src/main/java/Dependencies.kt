@@ -20,14 +20,14 @@ fun Project.getLocalProperty(name: String): String {
 
 
 object Versions {
-    const val kotlin = "1.5.30"
+    const val kotlin = "1.7.20"
     val versionCode = getVersionNumber()
     const val versionName = "1.1.1"
-    const val coroutines = "1.6.0"
+    const val coroutines = "1.5.0"
     const val serialization = "1.2.2"
-    const val ktor = "1.6.4"
-    const val koin = "3.1.2"
-    const val sqldelight = "1.5.0"
+    const val ktor = "2.1.2"
+    const val koin = "3.2.2"
+    const val sqldelight = "1.5.2"
     const val coreKtx = "1.6.0"
     const val navigation = "2.3.5"
     const val klock = "2.4.1"
@@ -37,11 +37,11 @@ object Versions {
     const val coil = "1.4.0"
 
     //Jetpack Compose
-    const val compose = "1.0.3"
-    const val navCompose = "2.4.0-alpha08"
-    const val accompanist = "0.17.0"
-    const val constraintLayout = "1.0.0-beta02"
-    const val lifecycle = "2.4.0"
+    const val compose = "1.3.2"
+    const val navCompose = "2.5.2"
+    const val accompanist = "0.26.4-beta"
+    const val constraintLayout = "1.0.1"
+    const val lifecycle = "2.4.1"
 }
 
 object Dependencies {
@@ -63,7 +63,7 @@ object Dependencies {
     }
 
     object Root {
-        const val android = "com.android.tools.build:gradle:7.0.2"
+        const val android = "com.android.tools.build:gradle:7.2.1"
         const val serialization = "org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}"
         const val cocoapods = "co.touchlab:kotlinnativecocoapods:0.6"
         const val sqldelight = "com.squareup.sqldelight:gradle-plugin:${Versions.sqldelight}"
