@@ -1,16 +1,50 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "BottomBar-SwiftUI",
-        "repositoryURL": "https://github.com/smartvipere75/bottombar-swiftui",
-        "state": {
-          "branch": "master",
-          "revision": "838ce6316f8282467ebd00cf4d9706dc58978633",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "mapbox-common-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/mapbox-common-ios.git",
+      "state" : {
+        "revision" : "94505a90242f621ac537f9a275bbd0b4deb5a64e",
+        "version" : "23.0.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "mapbox-core-maps-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/mapbox-core-maps-ios.git",
+      "state" : {
+        "revision" : "d10cd7b364d29caa4366dddd990b0f5c3cba113d",
+        "version" : "10.8.0"
+      }
+    },
+    {
+      "identity" : "mapbox-events-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/mapbox-events-ios.git",
+      "state" : {
+        "revision" : "5e130fba637f5bbb0bb8bca0dec8d38a06ce07bf",
+        "version" : "1.0.8"
+      }
+    },
+    {
+      "identity" : "mapbox-maps-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/mapbox-maps-ios.git",
+      "state" : {
+        "revision" : "cc0f7d86b42194e3872b76a0184fd58064e29f10",
+        "version" : "10.8.1"
+      }
+    },
+    {
+      "identity" : "turf-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapbox/turf-swift.git",
+      "state" : {
+        "revision" : "dbc07b0a298d642414d3abec59c9eaba1fb3367f",
+        "version" : "2.5.0"
+      }
+    }
+  ],
+  "version" : 2
 }

@@ -1,19 +1,25 @@
 package com.worldline.kmm.remote.client
 
-import io.ktor.client.*
-import io.ktor.client.features.*
-import io.ktor.client.features.json.*
-import io.ktor.client.features.json.serializer.*
-import io.ktor.client.features.logging.*
-import io.ktor.http.*
+import io.ktor.client.HttpClient
+import io.ktor.client.HttpClientConfig
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.defaultRequest
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
+import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.plugins.logging.SIMPLE
+import io.ktor.http.URLBuilder
+import io.ktor.http.encodedPath
 import kotlinx.serialization.json.Json
 
-internal val json: Json = Json {
+val json: Json = Json {
     isLenient = true
     ignoreUnknownKeys = true
     allowSpecialFloatingPointValues = true
     useArrayPolymorphism = true
+    encodeDefaults = true
 }
+
 
 internal fun <T> URLBuilder.params(vararg params: Map.Entry<String, T>) {
     parameters.apply {
@@ -47,8 +53,8 @@ internal fun buildClient(
                 level = LogLevel.ALL
             }
         }
-        install(JsonFeature) {
-            serializer = KotlinxSerializer(json)
+        install(ContentNegotiation) {
+            TODO()
         }
         block(this)
     }

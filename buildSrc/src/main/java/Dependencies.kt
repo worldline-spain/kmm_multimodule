@@ -1,6 +1,6 @@
 import org.gradle.api.Project
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
 fun getVersionNumber(): Int {
     val dateFormat = SimpleDateFormat("yyMMddHH")
@@ -20,10 +20,11 @@ fun Project.getLocalProperty(name: String): String {
 
 
 object Versions {
+    const val compileSdkVersion = 33
     const val kotlin = "1.7.20"
     val versionCode = getVersionNumber()
     const val versionName = "1.1.1"
-    const val coroutines = "1.5.0"
+    const val coroutines = "1.6.4"
     const val serialization = "1.2.2"
     const val ktor = "2.1.2"
     const val koin = "3.2.2"
@@ -37,7 +38,8 @@ object Versions {
     const val coil = "1.4.0"
 
     //Jetpack Compose
-    const val compose = "1.3.2"
+    const val compose = "1.2.1"
+    const val composeCompiler = "1.3.2"
     const val navCompose = "2.5.2"
     const val accompanist = "0.26.4-beta"
     const val constraintLayout = "1.0.1"
@@ -78,7 +80,6 @@ object Dependencies {
             "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
         const val recycler = "androidx.recyclerview:recyclerview:1.2.0"
         const val material = "com.google.android.material:material:1.4.0"
-        const val coroutines = Shared.Ui.Android.coroutines
         const val mapbox = "com.mapbox.maps:android:${Versions.mapbox}"
         const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
     }
@@ -86,7 +87,7 @@ object Dependencies {
     object DI {
         const val koinCore = "io.insert-koin:koin-core:${Versions.koin}"
         const val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
-        const val koinCompose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
+        const val koinCompose = "io.insert-koin:koin-androidx-compose:3.2.1"
     }
 
     object Compose {
@@ -118,16 +119,13 @@ object Dependencies {
                 "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
 
             object Android {
-                const val coroutines =
-                    "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
                 const val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
                 const val navigationFragment =
                     "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
             }
 
             object Native {
-                const val coroutines =
-                    "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${Versions.coroutines}"
+
             }
         }
 
@@ -153,6 +151,7 @@ object Dependencies {
 
                 const val ktorClientCore = "io.ktor:ktor-client-core:${Versions.ktor}"
                 const val ktorClientJson = "io.ktor:ktor-client-json:${Versions.ktor}"
+                const val ktorClientContentNegotiation = "io.ktor:ktor-client-content-negotiation:${Versions.ktor}"
                 const val ktorSerialization = "io.ktor:ktor-client-serialization:${Versions.ktor}"
                 const val ktorClientAuth = "io.ktor:ktor-client-auth:${Versions.ktor}"
                 const val ktorLogging = "io.ktor:ktor-client-logging:${Versions.ktor}"

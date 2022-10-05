@@ -8,8 +8,9 @@ import com.worldline.kmm.remote.client.withPath
 import com.worldline.kmm.remote.dto.PoiResponseDto
 import com.worldline.kmm.remote.extension.execute
 import com.worldline.kmm.remote.mapper.toModel
-import io.ktor.client.request.*
-import io.ktor.utils.io.core.*
+import io.ktor.client.call.body
+import io.ktor.client.request.get
+import io.ktor.utils.io.core.use
 
 class SharedPoiRemote : PoiRemote {
 
@@ -22,9 +23,9 @@ class SharedPoiRemote : PoiRemote {
 
     override suspend fun getAllPois(): Either<Error, List<Poi>> = execute {
         http.use {
-            it.get<PoiResponseDto> {
+            it.get {
                 url.withPath("/pois.json")
-            }.list.map { it.toModel() }
+            }.body<PoiResponseDto>().list.map { it.toModel() }
         }
     }
 }

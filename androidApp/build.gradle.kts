@@ -9,6 +9,10 @@ plugins {
 
 dependencies {
 
+    with(Dependencies.Shared.Ui) {
+        implementation(coroutines)
+    }
+
     with(Modules) {
         implementation(project(core))
 
@@ -26,7 +30,6 @@ dependencies {
 
     with(Dependencies.Android) {
         implementation(core)
-        implementation(coroutines)
         implementation(appCompat)
         implementation(constraintLayout)
         implementation(navigationFragment)
@@ -57,11 +60,11 @@ dependencies {
 }
 
 android {
-    compileSdkVersion(31)
+    compileSdkVersion(Versions.compileSdkVersion)
     defaultConfig {
         applicationId = "com.worldline.kmm.android"
         minSdkVersion(23)
-        targetSdkVersion(31)
+        targetSdkVersion(Versions.compileSdkVersion)
         versionCode = 1
         versionName = "1.0"
 
@@ -87,7 +90,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
+        kotlinCompilerExtensionVersion = Versions.composeCompiler
     }
 
     packagingOptions {

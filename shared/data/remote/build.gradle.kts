@@ -32,6 +32,7 @@ kotlin {
                 with(Dependencies.Shared.Data.Remote) {
                     implementation(ktorClientCore)
                     implementation(ktorClientJson)
+                    implementation(ktorClientContentNegotiation)
                     implementation(ktorSerialization)
                     implementation(ktorClientAuth)
                     implementation(ktorLogging)

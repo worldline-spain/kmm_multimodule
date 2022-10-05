@@ -34,7 +34,6 @@ kotlin {
                 }
                 with(Dependencies.DI) {
                     implementation(koinCore)
-                    implementation(koinAndroid)
                 }
             }
         }
@@ -47,7 +46,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 with(Dependencies.Shared.Ui.Android) {
-                    implementation(coroutines)
+                    implementation(koinAndroid)
                 }
             }
         }
@@ -65,6 +64,9 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+
+            }
         }
         val iosX64Test by getting
         val iosArm64Test by getting
@@ -79,10 +81,10 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(31)
+    compileSdkVersion(Versions.compileSdkVersion)
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdkVersion(23)
-        targetSdkVersion(31)
+        targetSdkVersion(Versions.compileSdkVersion)
     }
 }
