@@ -1,24 +1,24 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'remote'
+    spec.name                     = 'repository'
     spec.version                  = '1.0'
-    spec.homepage                 = ''
+    spec.homepage                 = 'Shared module'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = ''
-    spec.vendored_frameworks      = 'build/cocoapods/framework/remote.framework'
+    spec.summary                  = 'Repository features module'
+    spec.vendored_frameworks      = 'build/cocoapods/framework/Repository.framework'
     spec.libraries                = 'c++'
-                
+    spec.ios.deployment_target = '14'
                 
                 
     spec.pod_target_xcconfig = {
-        'KOTLIN_PROJECT_PATH' => ':shared:data:remote',
-        'PRODUCT_MODULE_NAME' => 'remote',
+        'KOTLIN_PROJECT_PATH' => ':shared:feature:repository',
+        'PRODUCT_MODULE_NAME' => 'Repository',
     }
                 
     spec.script_phases = [
         {
-            :name => 'Build remote',
+            :name => 'Build repository',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT

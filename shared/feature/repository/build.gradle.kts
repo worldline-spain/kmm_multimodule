@@ -1,6 +1,6 @@
 plugins {
     kotlin("multiplatform")
-    kotlin("native.cocoapods")
+    kotlin("plugin.serialization")
     id("com.android.library")
 }
 
@@ -15,9 +15,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                with(Dependencies.Shared.Ui) {
-                    implementation(coroutines)
-                }
+                implementation(project(Dependencies.Modules.core))
+                implementation(project(Dependencies.Modules.local))
+                implementation(project(Dependencies.Modules.remote))
                 with(Dependencies.DI) {
                     implementation(koinCore)
                 }
@@ -29,7 +29,10 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
@@ -58,10 +61,10 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(Versions.compileSdkVersion)
+    compileSdk = 32
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdkVersion(23)
-        targetSdkVersion(Versions.compileSdkVersion)
+        minSdk = 23
+        targetSdk = 32
     }
 }

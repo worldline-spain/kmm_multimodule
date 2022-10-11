@@ -13,17 +13,6 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
-    cocoapods {
-        summary = "Network module"
-        homepage = "Network module"
-        ios.deploymentTarget = "14"
-        framework {
-            baseName = "remote"
-            isStatic = false
-        }
-        podfile = project.file("../../../iosApp/Podfile")
-    }
-
     sourceSets {
         val commonMain by getting {
             dependencies {

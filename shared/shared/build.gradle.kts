@@ -12,11 +12,34 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
+    cocoapods {
+        summary = "Module that exports all of the other shared modules, so it works properly in iOS"
+        homepage = "Module that exports all of the other shared modules, so it works properly in iOS"
+        ios.deploymentTarget = "14.1"
+        framework {
+            baseName = "shared"
+            isStatic = false
+            with(Dependencies.Modules) {
+                export(project(core))
+                export(project(local))
+                export(project(remote))
+                export(project(repository))
+                export(project(ui))
+            }
+            linkerOpts.add("-lsqlite3")
+        }
+        podfile = project.file("../../iosApp/Podfile")
+    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
-                with(Dependencies.Shared.Ui) {
-                    implementation(coroutines)
+                with(Dependencies.Modules) {
+                    api(project(core))
+                    api(project(local))
+                    api(project(remote))
+                    api(project(repository))
+                    api(project(ui))
                 }
                 with(Dependencies.DI) {
                     implementation(koinCore)
@@ -25,17 +48,11 @@ kotlin {
         }
         val commonTest by getting {
             dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+                implementation(kotlin("test"))
             }
         }
         val androidMain by getting
-        val androidTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-                implementation("junit:junit:4.13.2")
-            }
-        }
+        val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
@@ -58,10 +75,10 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(Versions.compileSdkVersion)
+    compileSdk = 32
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdkVersion(23)
-        targetSdkVersion(Versions.compileSdkVersion)
+        minSdk = 23
+        targetSdk = 32
     }
 }

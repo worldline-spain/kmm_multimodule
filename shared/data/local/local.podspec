@@ -1,14 +1,14 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'local'
     spec.version                  = '1.0'
-    spec.homepage                 = 'Local module'
+    spec.homepage                 = ''
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'Local module'
+    spec.summary                  = ''
     spec.vendored_frameworks      = 'build/cocoapods/framework/local.framework'
     spec.libraries                = 'c++'
-    spec.ios.deployment_target = '14'
+                
                 
                 
     spec.pod_target_xcconfig = {

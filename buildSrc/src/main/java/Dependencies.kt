@@ -1,6 +1,6 @@
 import org.gradle.api.Project
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 fun getVersionNumber(): Int {
     val dateFormat = SimpleDateFormat("yyMMddHH")
@@ -49,19 +49,12 @@ object Versions {
 object Dependencies {
 
     object Modules {
-
+        const val shared = ":shared:shared"
         const val core = ":shared:core"
-
-        object Poi {
-            const val ui = ":shared:feature:poi:poiui"
-            const val repository = ":shared:feature:poi:poirepository"
-            const val remote = ":shared:data:remote"
-            const val local = ":shared:data:local"
-        }
-
-        object Home {
-            const val ui = ":shared:feature:home:homeui"
-        }
+        const val local = ":shared:data:local"
+        const val remote = ":shared:data:remote"
+        const val repository = ":shared:feature:repository"
+        const val ui = ":shared:feature:viewModels"
     }
 
     object Root {

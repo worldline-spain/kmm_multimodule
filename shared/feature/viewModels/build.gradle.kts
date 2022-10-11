@@ -15,6 +15,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(project(Dependencies.Modules.core))
+                implementation(project(Dependencies.Modules.repository))
+
                 with(Dependencies.Shared.Ui) {
                     implementation(coroutines)
                 }
@@ -29,7 +32,13 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                with(Dependencies.Shared.Ui.Android) {
+                    implementation(koinAndroid)
+                }
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
@@ -44,6 +53,9 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+
+            }
         }
         val iosX64Test by getting
         val iosArm64Test by getting

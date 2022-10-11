@@ -1,24 +1,24 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'remote'
+    spec.name                     = 'viewModels'
     spec.version                  = '1.0'
     spec.homepage                 = ''
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
     spec.summary                  = ''
-    spec.vendored_frameworks      = 'build/cocoapods/framework/remote.framework'
+    spec.vendored_frameworks      = 'build/cocoapods/framework/viewModels.framework'
     spec.libraries                = 'c++'
                 
                 
                 
     spec.pod_target_xcconfig = {
-        'KOTLIN_PROJECT_PATH' => ':shared:data:remote',
-        'PRODUCT_MODULE_NAME' => 'remote',
+        'KOTLIN_PROJECT_PATH' => ':shared:feature:viewModels',
+        'PRODUCT_MODULE_NAME' => 'viewModels',
     }
                 
     spec.script_phases = [
         {
-            :name => 'Build remote',
+            :name => 'Build viewModels',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT

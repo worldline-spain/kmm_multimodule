@@ -1,6 +1,4 @@
 import Dependencies.Modules
-import Dependencies.Modules.Home
-import Dependencies.Modules.Poi
 
 plugins {
     id("com.android.application")
@@ -14,18 +12,7 @@ dependencies {
     }
 
     with(Modules) {
-        implementation(project(core))
-
-        with(Poi) {
-            implementation(project(ui))
-            implementation(project(repository))
-            implementation(project(remote))
-            implementation(project(local))
-        }
-
-        with(Home) {
-            implementation(project(ui))
-        }
+        implementation(project(shared))
     }
 
     with(Dependencies.Android) {

@@ -22,9 +22,9 @@ import coil.compose.rememberImagePainter
 import com.worldline.kmm.android.R
 import com.worldline.kmm.android.theme.AppTheme
 import com.worldline.kmm.core.Poi
-import com.worldline.kmm.ui.logic.poilistvm.PoiListEvent
-import com.worldline.kmm.ui.logic.poilistvm.PoiListState
-import com.worldline.kmm.ui.logic.poilistvm.PoiListViewModel
+import com.worldline.kmm.views.logic.PoiListEvent
+import com.worldline.kmm.views.logic.PoiListState
+import com.worldline.kmm.views.logic.PoiListViewModel
 import com.worldline.kmm.viewmodel.NavigationEvent
 import com.worldline.kmm.viewmodel.RootViewModel
 import com.worldline.kmm.viewmodel.ViewState

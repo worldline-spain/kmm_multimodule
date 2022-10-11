@@ -11,7 +11,6 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCompositionContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -26,10 +25,9 @@ import com.worldline.kmm.android.ui.composables.poilist.EmptyView
 import com.worldline.kmm.android.ui.composables.poilist.LoadingView
 import com.worldline.kmm.android.ui.composables.poilist.stateWithLifecycle
 import com.worldline.kmm.core.Poi
-import com.worldline.kmm.ui.logic.poilistvm.PoiDetailEvent
-import com.worldline.kmm.ui.logic.poilistvm.PoiDetailState
-import com.worldline.kmm.ui.logic.poilistvm.PoiDetailViewModel
-import com.worldline.kmm.viewmodel.NavigationEvent
+import com.worldline.kmm.views.logic.PoiDetailEvent
+import com.worldline.kmm.views.logic.PoiDetailState
+import com.worldline.kmm.views.logic.PoiDetailViewModel
 
 @Composable
 fun PoiDetailRoute(poiId: Long, navController : NavController) {

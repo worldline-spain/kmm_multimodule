@@ -16,9 +16,9 @@ import com.worldline.kmm.android.exhaustive
 import com.worldline.kmm.android.ui.composables.poilist.PoiListRoute
 import com.worldline.kmm.android.ui.composables.poilist.stateWithLifecycle
 import com.worldline.kmm.android.ui.composables.poimap.PoiMapRoute
-import com.worldline.kmm.home.logic.HomeEvent
-import com.worldline.kmm.home.logic.HomeState
-import com.worldline.kmm.home.logic.HomeViewModel
+import com.worldline.kmm.views.logic.HomeEvent
+import com.worldline.kmm.views.logic.HomeState
+import com.worldline.kmm.views.logic.HomeViewModel
 import com.worldline.kmm.ui.MaterialColor
 import com.worldline.kmm.viewmodel.NavigationEvent
 
