@@ -1,9 +1,8 @@
-package com.worldline.kmm.views.di
+package com.worldline.kmm.di
 
 import com.worldline.kmm.viewmodel.executor.Executor
 import org.koin.core.module.Module
-import org.koin.dsl.module
 
-actual val platformModule: Module = module {
+actual fun Module.commonPlatformModule() {
     single { Executor() }
 }

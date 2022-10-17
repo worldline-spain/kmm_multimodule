@@ -3,7 +3,6 @@ package com.worldline.kmm.feature.repository.logic
 import com.worldline.kmm.core.Either
 import com.worldline.kmm.core.Error
 import com.worldline.kmm.core.Poi
-import com.worldline.kmm.feature.repository.Repository
 import com.worldline.kmm.local.PoiLocal
 import com.worldline.kmm.remote.PoiRemote
 

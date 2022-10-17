@@ -1,7 +1,7 @@
-package com.worldline.kmm.feature.viewModels.logic
+package com.worldline.kmm.viewModels.logic
 
 import com.worldline.kmm.core.Poi
-import com.worldline.kmm.feature.poi.PoiRepository
+import com.worldline.kmm.feature.repository.logic.Repository
 import com.worldline.kmm.viewmodel.NavigationEvent
 import com.worldline.kmm.viewmodel.RootViewModel
 import com.worldline.kmm.viewmodel.ViewState
@@ -14,7 +14,7 @@ import org.koin.core.component.inject
 class PoiListViewModel(private val onNavigationEvent: (NavigationEvent) -> Unit) :
     RootViewModel<PoiListState>(), KoinComponent {
 
-    private val poiRepository: PoiRepository by inject()
+    private val repository: Repository by inject()
 
     private val _uiState = MutableStateFlow<PoiListState>(PoiListState.InProgress)
 
@@ -29,7 +29,7 @@ class PoiListViewModel(private val onNavigationEvent: (NavigationEvent) -> Unit)
         vmScope.launch {
             _uiState.value = PoiListState.InProgress
 
-            execute { poiRepository.getAll(false) }.fold(
+            execute { repository.getAllPOIs(false) }.fold(
                 error = { _uiState.value = PoiListState.Error(it) },
                 success = { _uiState.value = PoiListState.Success(it) }
             )

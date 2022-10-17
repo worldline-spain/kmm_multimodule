@@ -1,7 +1,7 @@
-package com.worldline.kmm.feature.viewModels.logic
+package com.worldline.kmm.viewModels.logic
 
 import com.worldline.kmm.core.Poi
-import com.worldline.kmm.feature.poi.PoiRepository
+import com.worldline.kmm.feature.repository.logic.Repository
 import com.worldline.kmm.viewmodel.RootViewModel
 import com.worldline.kmm.viewmodel.ViewState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,7 +11,7 @@ import org.koin.core.component.inject
 
 class PoiDetailViewModel(private val poiId: Long) : RootViewModel<PoiDetailState>() {
 
-    private val poiRepository: PoiRepository by inject()
+    private val repository: Repository by inject()
 
     private val _uiState = MutableStateFlow<PoiDetailState>(PoiDetailState.InProgress)
 
@@ -21,7 +21,7 @@ class PoiDetailViewModel(private val poiId: Long) : RootViewModel<PoiDetailState
         vmScope.launch {
             _uiState.value = PoiDetailState.InProgress
 
-            execute { poiRepository.getById(poiId) }.fold(
+            execute { repository.getPOIById(poiId) }.fold(
                 error = { _uiState.value = PoiDetailState.Error(it) },
                 success = { _uiState.value = PoiDetailState.Success(it) }
             )
