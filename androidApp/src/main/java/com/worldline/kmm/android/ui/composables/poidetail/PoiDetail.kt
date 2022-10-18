@@ -25,12 +25,12 @@ import com.worldline.kmm.android.ui.composables.poilist.EmptyView
 import com.worldline.kmm.android.ui.composables.poilist.LoadingView
 import com.worldline.kmm.android.ui.composables.poilist.stateWithLifecycle
 import com.worldline.kmm.core.Poi
-import com.worldline.kmm.views.logic.PoiDetailEvent
-import com.worldline.kmm.views.logic.PoiDetailState
-import com.worldline.kmm.views.logic.PoiDetailViewModel
+import com.worldline.kmm.viewModels.logic.PoiDetailEvent
+import com.worldline.kmm.viewModels.logic.PoiDetailState
+import com.worldline.kmm.viewModels.logic.PoiDetailViewModel
 
 @Composable
-fun PoiDetailRoute(poiId: Long, navController : NavController) {
+fun PoiDetailRoute(poiId: Long, navController: NavController) {
     val viewModel = remember { PoiDetailViewModel(poiId) }
     Text(text = "Hello $poiId")
 

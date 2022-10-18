@@ -27,9 +27,9 @@ import com.worldline.kmm.android.ui.composables.poilist.EmptyView
 import com.worldline.kmm.android.ui.composables.poilist.LoadingView
 import com.worldline.kmm.android.ui.composables.poilist.stateWithLifecycle
 import com.worldline.kmm.core.Poi
-import com.worldline.kmm.views.logic.PoiListEvent
-import com.worldline.kmm.views.logic.PoiListState
-import com.worldline.kmm.views.logic.PoiListViewModel
+import com.worldline.kmm.viewModels.logic.PoiListEvent
+import com.worldline.kmm.viewModels.logic.PoiListState
+import com.worldline.kmm.viewModels.logic.PoiListViewModel
 import com.worldline.kmm.viewmodel.NavigationEvent
 
 @Composable
