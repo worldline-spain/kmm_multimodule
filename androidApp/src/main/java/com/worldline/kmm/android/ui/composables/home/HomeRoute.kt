@@ -60,18 +60,30 @@ fun HomeContent(
 @Composable
 fun HomeBottomBar(onEvent: (HomeEvent) -> Unit) {
     BottomNavigation(
-        backgroundColor = Color(MaterialColor.AMBER.tone(600, 100))
+        backgroundColor = Color(MaterialColor.TEAL.tone(600, 100))
     ) {
         BottomNavigationItem(
             selected = false,
             onClick = { onEvent(HomeEvent.List) },
-            icon = { Icon(Icons.Filled.List, contentDescription = "Test") },
+            icon = {
+                Icon(
+                    imageVector = Icons.Filled.List,
+                    contentDescription = "Test",
+                    tint = Color.White
+                )
+            },
             label = { Text(text = "List") }
         )
         BottomNavigationItem(
             selected = false,
             onClick = { onEvent(HomeEvent.Map) },
-            icon = { Icon(Icons.Filled.LocationOn, contentDescription = "Test") },
+            icon = {
+                Icon(
+                    imageVector = Icons.Filled.LocationOn,
+                    contentDescription = "Test",
+                    tint = Color.White
+                )
+            },
             label = { Text(text = "Map") }
         )
     }
