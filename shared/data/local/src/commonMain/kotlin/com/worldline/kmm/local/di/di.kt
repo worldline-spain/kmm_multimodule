@@ -9,6 +9,7 @@ val localModule = module {
     single<PoiLocal> {
         SharedPoiLocal(get())
     }
+    localPlatformModule()
 }
 
-expect val platformModule: Module
+expect fun Module.localPlatformModule()
