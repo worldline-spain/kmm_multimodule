@@ -1,5 +1,5 @@
 import SwiftUI
-import PoiUI
+import shared
 
 class PoiListProxy: ObservableObject {
     
@@ -7,7 +7,7 @@ class PoiListProxy: ObservableObject {
     
     @Published var state: PoiListState = PoiListState.InProgress()
     
-    init(onNavigationEvent: @escaping (CoreNavigationEvent) -> Void) {
+    init(onNavigationEvent: @escaping (NavigationEvent) -> Void) {
         viewModel = PoiListViewModel(onNavigationEvent: onNavigationEvent)
         viewModel.observe(viewModel.state) { newState in
             self.state = newState as! PoiListState
@@ -20,7 +20,7 @@ struct PoiListView: View {
     
     @ObservedObject var proxy : PoiListProxy
     
-    init(onNavigationEvent: @escaping (CoreNavigationEvent) -> Void) {
+    init(onNavigationEvent: @escaping (NavigationEvent) -> Void) {
         self.proxy  = PoiListProxy(onNavigationEvent: onNavigationEvent)
     }
     
@@ -55,10 +55,10 @@ struct PoiListScreen: View {
 
 struct PoiListContent: View {
     
-    var pois: [CorePoi] = []
+    var pois: [Poi] = []
     var onEvent: (PoiListEvent) -> Void
     
-    init(pois: [CorePoi], onEvent: @escaping (PoiListEvent) -> Void) {
+    init(pois: [Poi], onEvent: @escaping (PoiListEvent) -> Void) {
         self.pois.removeAll()
         self.pois.append(contentsOf: pois)
         self.onEvent = onEvent
@@ -84,7 +84,7 @@ struct PoiListContent: View {
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        PoiListContent(pois: [CorePoi(id: 1, title: "Title", latitude: 0.0, longitude: 0.0, image: "")]) { PoiListEvent in
+        PoiListContent(pois: [Poi(id: 1, title: "Title", latitude: 0.0, longitude: 0.0, image: "")]) { PoiListEvent in
         }
     }
 }

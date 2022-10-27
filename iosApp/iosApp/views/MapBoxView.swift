@@ -8,7 +8,7 @@
 
 import SwiftUI
 import MapboxMaps
-import PoiUI
+import shared
 
 class PoiMapProxy: ObservableObject {
     
@@ -74,7 +74,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    func showPoints(pois: [CorePoi]){
+    func showPoints(pois: [Poi]){
         
         var locations : [PointAnnotation] = []
         for poi in pois {

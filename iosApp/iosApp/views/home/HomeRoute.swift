@@ -8,9 +8,8 @@
 
 import Foundation
 import SwiftUI
-import HomeUI
+import shared
 import Combine
-import core
 
 class HomeProxy: ObservableObject {
     var viewModel = HomeViewModel()

@@ -1,7 +1,5 @@
 import SwiftUI
-import PoiUI
-import HomeUI
-import core
+import shared
 
 class NavigationProxy: ObservableObject {
     
@@ -25,9 +23,7 @@ struct iOSApp: App {
     @ObservedObject var proxy : NavigationProxy
     
     init() {
-        
-        HomeUiModule().initiOS()
-        PoiUiModule().initiOS()
+        IosDIKt.doInitKoinIos()
         proxy = NavigationProxy()
     }
     
