@@ -29,7 +29,7 @@ class PoiListViewModel(private val onNavigationEvent: (NavigationEvent) -> Unit)
         vmScope.launch {
             _uiState.value = PoiListState.InProgress
 
-            execute { repository.getAllPOIs(false) }.fold(
+            execute { repository.getAllPOIs(true) }.fold(
                 error = { _uiState.value = PoiListState.Error(it) },
                 success = { _uiState.value = PoiListState.Success(it) }
             )

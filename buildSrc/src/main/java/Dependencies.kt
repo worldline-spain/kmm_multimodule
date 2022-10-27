@@ -141,11 +141,13 @@ object Dependencies {
             object Remote {
                 const val serialization =
                     "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.serialization}"
-
                 const val ktorClientCore = "io.ktor:ktor-client-core:${Versions.ktor}"
                 const val ktorClientJson = "io.ktor:ktor-client-json:${Versions.ktor}"
-                const val ktorClientContentNegotiation = "io.ktor:ktor-client-content-negotiation:${Versions.ktor}"
+                const val ktorClientContentNegotiation =
+                    "io.ktor:ktor-client-content-negotiation:${Versions.ktor}"
                 const val ktorSerialization = "io.ktor:ktor-client-serialization:${Versions.ktor}"
+                const val ktorClientSerializationJson =
+                    "io.ktor:ktor-serialization-kotlinx-json:${Versions.ktor}"
                 const val ktorClientAuth = "io.ktor:ktor-client-auth:${Versions.ktor}"
                 const val ktorLogging = "io.ktor:ktor-client-logging:${Versions.ktor}"
 

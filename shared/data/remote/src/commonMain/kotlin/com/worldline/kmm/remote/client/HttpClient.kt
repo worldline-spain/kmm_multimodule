@@ -1,15 +1,12 @@
 package com.worldline.kmm.remote.client
 
-import io.ktor.client.HttpClient
-import io.ktor.client.HttpClientConfig
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.client.plugins.defaultRequest
-import io.ktor.client.plugins.logging.LogLevel
-import io.ktor.client.plugins.logging.Logger
-import io.ktor.client.plugins.logging.Logging
-import io.ktor.client.plugins.logging.SIMPLE
-import io.ktor.http.URLBuilder
-import io.ktor.http.encodedPath
+import com.worldline.kmm.remote.client.json
+import io.ktor.client.*
+import io.ktor.client.plugins.*
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.plugins.logging.*
+import io.ktor.http.*
+import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 
 val json: Json = Json {
@@ -54,7 +51,7 @@ internal fun buildClient(
             }
         }
         install(ContentNegotiation) {
-            TODO()
+            json(json)
         }
         block(this)
     }
