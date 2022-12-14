@@ -11,33 +11,24 @@ import SwiftUI
 import shared
 import Combine
 
-class HomeProxy: ObservableObject {
-    var viewModel = HomeViewModel()
-    
-    @Published var state: HomeState = HomeState.List()
-    
-    init() {
-        viewModel.observe(viewModel.state) { newState in
-             self.state = newState as! HomeState
-        }
-    }
-}
-
 struct HomeRoute: View {
     
-    @ObservedObject var proxy = HomeProxy()
+    @ObservedObject var viewModel : HomeViewModel = HomeViewModel().attach()
+    @State var navigator : Navigator = Navigator()
     
     var onNavigationEvent: (NavigationEvent) -> Void
 
     var body: some View {
-        HomeContent(state: proxy.state, onEvent: { event in
-            proxy.viewModel.onEvent(event: event)
+        HomeContent(
+            state: viewModel.state(\.state, equals: { $0 === $1 }, mapper: { $0 }),
+            onEvent: { event in
+            viewModel.onEvent(event: event)
         }, onNavigationEvent: onNavigationEvent)
             .onAppear(perform: {
-                proxy.viewModel.onEvent(event: HomeEvent.Attach())
+                viewModel.onEvent(event: HomeEvent.Attach())
             }).onDisappear(perform: {
-                proxy.viewModel.detach()
-            })
+                viewModel.detach()
+            }).environmentObject(navigator)
 
     }
 }

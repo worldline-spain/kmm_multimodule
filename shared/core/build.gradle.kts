@@ -29,7 +29,13 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                with(Dependencies.Shared.Core.Android) {
+                    api(lifecycleViewModel)
+                }
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))

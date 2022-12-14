@@ -43,7 +43,7 @@ object Versions {
     const val navCompose = "2.5.2"
     const val accompanist = "0.26.4-beta"
     const val constraintLayout = "1.0.1"
-    const val lifecycle = "2.4.1"
+    const val lifecycle = "2.5.0"
 }
 
 object Dependencies {
@@ -105,7 +105,14 @@ object Dependencies {
     object Shared {
         const val arrow = "io.arrow-kt:arrow-core:${Versions.arrow}"
 
-        object Core
+        object Core {
+            object Android {
+                const val lifecycleViewModel =
+                    "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+            }
+
+            object Native
+        }
 
         object Ui {
             const val coroutines =

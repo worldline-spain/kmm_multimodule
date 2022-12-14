@@ -21,7 +21,7 @@ struct PoiListView: View {
     @ObservedObject var proxy : PoiListProxy
     
     init(onNavigationEvent: @escaping (NavigationEvent) -> Void) {
-        self.proxy  = PoiListProxy(onNavigationEvent: onNavigationEvent)
+        self.proxy = PoiListProxy(onNavigationEvent: onNavigationEvent)
     }
     
     var body: some View {

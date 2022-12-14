@@ -1,15 +1,9 @@
 package com.worldline.kmm.viewmodel
 
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+class NavigationViewModel :
+    RootViewModel<NavigationState, NavigationEvent, NavigationAction>(NavigationState.Home) {
 
-class NavigationViewModel : RootViewModel<NavigationState>() {
-
-    private val _uiState = MutableStateFlow<NavigationState>(NavigationState.Home)
-
-    override val state: StateFlow<NavigationState> = _uiState
-
-    override fun attach() {
+    override fun attach(): NavigationViewModel = apply {
         // do nothing
     }
 
@@ -30,3 +24,5 @@ sealed class NavigationEvent(val route: String) {
         fun createRoute() = "detail/$id"
     }
 }
+
+sealed class NavigationAction
