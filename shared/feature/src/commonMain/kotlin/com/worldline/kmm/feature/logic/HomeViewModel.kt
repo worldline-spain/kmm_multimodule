@@ -1,18 +1,13 @@
-package com.worldline.kmm.feature.viewModels.logic
+package com.worldline.kmm.feature.logic
 
 import com.worldline.kmm.viewmodel.RootViewModel
 import com.worldline.kmm.viewmodel.ViewState
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import org.koin.core.component.KoinComponent
 
-class HomeViewModel : RootViewModel<HomeState>(), KoinComponent {
+class HomeViewModel : RootViewModel<HomeState, HomeEvent, HomeAction>(HomeState.List),
+    KoinComponent {
 
-    private val _uiState = MutableStateFlow<HomeState>(HomeState.List)
-
-    override val state: StateFlow<HomeState> = _uiState
-
-    override fun attach() {
+    override fun attach(): HomeViewModel = apply {
         // Do nothing
     }
 
@@ -34,4 +29,8 @@ sealed class HomeEvent {
     object Attach : HomeEvent()
     object List : HomeEvent()
     object Map : HomeEvent()
+}
+
+sealed class HomeAction {
+
 }

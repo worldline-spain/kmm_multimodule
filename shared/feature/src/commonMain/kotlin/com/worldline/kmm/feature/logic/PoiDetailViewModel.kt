@@ -1,23 +1,18 @@
-package com.worldline.kmm.viewModels.logic
+package com.worldline.kmm.feature.logic
 
 import com.worldline.kmm.core.Poi
-import com.worldline.kmm.feature.repository.logic.Repository
+import com.worldline.kmm.data.repository.logic.Repository
 import com.worldline.kmm.viewmodel.RootViewModel
 import com.worldline.kmm.viewmodel.ViewState
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import org.koin.core.component.inject
 
-class PoiDetailViewModel(private val poiId: Long) : RootViewModel<PoiDetailState>() {
+class PoiDetailViewModel(private val poiId: Long) :
+    RootViewModel<PoiDetailState, PoiDetailEvent, PoiDetailAction>(PoiDetailState.InProgress) {
 
     private val repository: Repository by inject()
 
-    private val _uiState = MutableStateFlow<PoiDetailState>(PoiDetailState.InProgress)
-
-    override val state: StateFlow<PoiDetailState> = _uiState
-
-    override fun attach() {
+    override fun attach(): PoiDetailViewModel = apply {
         vmScope.launch {
             _uiState.value = PoiDetailState.InProgress
 
@@ -43,4 +38,8 @@ sealed class PoiDetailState : ViewState() {
 
 sealed class PoiDetailEvent {
     object Attach : PoiDetailEvent()
+}
+
+sealed class PoiDetailAction {
+
 }

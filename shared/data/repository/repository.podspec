@@ -5,14 +5,14 @@ Pod::Spec.new do |spec|
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'Repository features module'
+    spec.summary                  = 'Repository data module'
     spec.vendored_frameworks      = 'build/cocoapods/framework/Repository.framework'
     spec.libraries                = 'c++'
     spec.ios.deployment_target = '14'
                 
                 
     spec.pod_target_xcconfig = {
-        'KOTLIN_PROJECT_PATH' => ':shared:feature:repository',
+        'KOTLIN_PROJECT_PATH' => ':shared:data:repository',
         'PRODUCT_MODULE_NAME' => 'Repository',
     }
                 

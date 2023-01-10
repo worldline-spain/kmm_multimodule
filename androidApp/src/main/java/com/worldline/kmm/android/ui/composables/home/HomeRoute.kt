@@ -8,10 +8,10 @@ import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.worldline.kmm.android.exhaustive
 import com.worldline.kmm.android.ui.composables.poilist.PoiListRoute
 import com.worldline.kmm.android.ui.composables.poilist.stateWithLifecycle
@@ -20,16 +20,13 @@ import com.worldline.kmm.feature.viewModels.logic.HomeEvent
 import com.worldline.kmm.feature.viewModels.logic.HomeState
 import com.worldline.kmm.feature.viewModels.logic.HomeViewModel
 import com.worldline.kmm.ui.MaterialColor
-import com.worldline.kmm.viewmodel.NavigationEvent
 
 @Composable
-fun HomeRoute(onNavigationEvent: (NavigationEvent) -> Unit) {
-    val viewModel = remember { HomeViewModel() }
-
+fun HomeRoute(navController: NavHostController, viewModel: HomeViewModel) {
     HomeContent(
         state = viewModel.stateWithLifecycle().value,
         onEvent = { viewModel.onEvent(it) },
-        onNavigationEvent = onNavigationEvent
+        navController = navController
     )
 }
 
@@ -37,7 +34,7 @@ fun HomeRoute(onNavigationEvent: (NavigationEvent) -> Unit) {
 fun HomeContent(
     state: HomeState,
     onEvent: (HomeEvent) -> Unit,
-    onNavigationEvent: (NavigationEvent) -> Unit
+    navController: NavHostController
 ) {
 
     Scaffold(

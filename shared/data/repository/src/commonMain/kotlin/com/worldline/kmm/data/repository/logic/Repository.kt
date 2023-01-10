@@ -1,4 +1,4 @@
-package com.worldline.kmm.feature.repository.logic
+package com.worldline.kmm.data.repository.logic
 
 import com.worldline.kmm.core.Either
 import com.worldline.kmm.core.Error

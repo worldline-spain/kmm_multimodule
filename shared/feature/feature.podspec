@@ -1,24 +1,24 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'viewModels'
+    spec.name                     = 'feature'
     spec.version                  = '1.0'
     spec.homepage                 = ''
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
     spec.summary                  = ''
-    spec.vendored_frameworks      = 'build/cocoapods/framework/viewModels.framework'
+    spec.vendored_frameworks      = 'build/cocoapods/framework/feature.framework'
     spec.libraries                = 'c++'
                 
                 
                 
     spec.pod_target_xcconfig = {
-        'KOTLIN_PROJECT_PATH' => ':shared:feature:viewModels',
-        'PRODUCT_MODULE_NAME' => 'viewModels',
+        'KOTLIN_PROJECT_PATH' => ':shared:feature',
+        'PRODUCT_MODULE_NAME' => 'feature',
     }
                 
     spec.script_phases = [
         {
-            :name => 'Build viewModels',
+            :name => 'Build feature',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT
@@ -28,7 +28,7 @@ Pod::Spec.new do |spec|
                 fi
                 set -ev
                 REPO_ROOT="$PODS_TARGET_SRCROOT"
-                "$REPO_ROOT/../../../gradlew" -p "$REPO_ROOT" $KOTLIN_PROJECT_PATH:syncFramework \
+                "$REPO_ROOT/../../gradlew" -p "$REPO_ROOT" $KOTLIN_PROJECT_PATH:syncFramework \
                     -Pkotlin.native.cocoapods.platform=$PLATFORM_NAME \
                     -Pkotlin.native.cocoapods.archs="$ARCHS" \
                     -Pkotlin.native.cocoapods.configuration="$CONFIGURATION"
