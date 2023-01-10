@@ -29,6 +29,7 @@ dependencies {
     with(Dependencies.DI) {
         implementation(koinCore)
         implementation(koinAndroid)
+        implementation(koinCompose)
     }
 
     with(Dependencies.Compose) {

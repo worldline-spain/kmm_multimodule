@@ -6,8 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.worldline.kmm.android.ui.composables.home.HomeRoute
-import com.worldline.kmm.android.ui.composables.poidetail.PoiDetailRoute
-import com.worldline.kmm.viewmodel.NavigationEvent.Detail
+import org.koin.androidx.compose.getViewModel
+import com.worldline.kmm.feature.logic.HomeViewModel
 
 @Composable
 fun PoiApp(navController: NavHostController = rememberNavController()) {
@@ -16,15 +16,15 @@ fun PoiApp(navController: NavHostController = rememberNavController()) {
         startDestination = NavigationRoute.Home.route
     ) {
         composable(route = NavigationRoute.Home.route) {
-            HomeRoute()
+            HomeRoute(navController = navController, viewModel = getViewModel())
         }
 
-        composable(route = Detail().route) {
+        /*composable(route = Detail().route) {
             PoiDetailRoute(
                 poiId = it.arguments!!.getString("poiId")!!.toLong(),
                 navController = navController
             )
-        }
+        }*/
     }
 
     /*val state = navigationViewModel.stateWithLifecycle().value

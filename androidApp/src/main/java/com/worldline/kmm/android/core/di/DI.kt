@@ -1,11 +1,10 @@
 package com.worldline.kmm.android.core.di
 
-import org.koin.core.module.Module
+import com.worldline.kmm.feature.*
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-fun appModules(): List<Module> {
-    return listOf(appModule)
-}
-
 val appModule = module {
+
+    viewModel { HomeViewModel().attach() }
 }
