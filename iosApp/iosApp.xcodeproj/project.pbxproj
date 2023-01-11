@@ -15,6 +15,7 @@
 		7555FF83242A565900829871 /* PoiListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* PoiListView.swift */; };
 		B461679F296DBB02001074CC /* CFlowExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B461679E296DBB01001074CC /* CFlowExt.swift */; };
 		B46167A1296DBB31001074CC /* PlatformViewModelExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46167A0296DBB31001074CC /* PlatformViewModelExtenstion.swift */; };
+		B46167A3296DCB9D001074CC /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46167A2296DCB9D001074CC /* Navigator.swift */; };
 		F728394427DD2E2CE034A763 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E015B6C6FF79455F7ABDFA47 /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		79F3CE81FF786DE614BA70F2 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		B461679E296DBB01001074CC /* CFlowExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFlowExt.swift; sourceTree = "<group>"; };
 		B46167A0296DBB31001074CC /* PlatformViewModelExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformViewModelExtenstion.swift; sourceTree = "<group>"; };
+		B46167A2296DCB9D001074CC /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		E015B6C6FF79455F7ABDFA47 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -124,6 +126,7 @@
 			children = (
 				B461679E296DBB01001074CC /* CFlowExt.swift */,
 				B46167A0296DBB31001074CC /* PlatformViewModelExtenstion.swift */,
+				B46167A2296DCB9D001074CC /* Navigator.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				B46167A1296DBB31001074CC /* PlatformViewModelExtenstion.swift in Sources */,
 				4933F6672799B2980083CE39 /* HomeRoute.swift in Sources */,
 				7555FF83242A565900829871 /* PoiListView.swift in Sources */,
+				B46167A3296DCB9D001074CC /* Navigator.swift in Sources */,
 				65C1F64727C3E58800A96A5E /* PoiDetailView.swift in Sources */,
 				B461679F296DBB02001074CC /* CFlowExt.swift in Sources */,
 			);
