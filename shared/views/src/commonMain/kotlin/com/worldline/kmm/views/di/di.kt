@@ -1,4 +1,4 @@
-package com.worldline.kmm.feature.di
+package com.worldline.kmm.views.di
 
 import org.koin.dsl.module
 

@@ -3,7 +3,7 @@ package com.worldline.kmm.shared
 
 import com.worldline.kmm.data.repository.di.repositoryModule
 import com.worldline.kmm.di.commonModule
-import com.worldline.kmm.feature.di.viewModule
+import com.worldline.kmm.views.di.viewModule
 import com.worldline.kmm.local.di.localModule
 import com.worldline.kmm.remote.di.remoteModule
 import org.koin.core.KoinApplication

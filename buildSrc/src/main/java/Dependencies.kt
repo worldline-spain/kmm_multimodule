@@ -54,7 +54,7 @@ object Dependencies {
         const val local = ":shared:data:local"
         const val remote = ":shared:data:remote"
         const val repository = ":shared:data:repository"
-        const val ui = ":shared:feature"
+        const val ui = ":shared:views"
     }
 
     object Root {

@@ -18,6 +18,9 @@ import com.worldline.kmm.android.ui.composables.poilist.stateWithLifecycle
 import com.worldline.kmm.android.ui.composables.poimap.PoiMapRoute
 import com.worldline.kmm.feature.*
 import com.worldline.kmm.ui.MaterialColor
+import com.worldline.kmm.views.logic.HomeEvent
+import com.worldline.kmm.views.logic.HomeState
+import com.worldline.kmm.views.logic.HomeViewModel
 
 @Composable
 fun HomeRoute(navController: NavHostController, viewModel: HomeViewModel) {

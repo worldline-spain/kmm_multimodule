@@ -7,7 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.worldline.kmm.android.ui.composables.home.HomeRoute
 import org.koin.androidx.compose.getViewModel
-import com.worldline.kmm.feature.logic.HomeViewModel
+import com.worldline.kmm.views.logic.HomeViewModel
 
 @Composable
 fun PoiApp(navController: NavHostController = rememberNavController()) {

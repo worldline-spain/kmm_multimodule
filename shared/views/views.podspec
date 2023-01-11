@@ -1,24 +1,24 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'feature'
+    spec.name                     = 'views'
     spec.version                  = '1.0'
     spec.homepage                 = ''
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
     spec.summary                  = ''
-    spec.vendored_frameworks      = 'build/cocoapods/framework/feature.framework'
+    spec.vendored_frameworks      = 'build/cocoapods/framework/views.framework'
     spec.libraries                = 'c++'
                 
                 
                 
     spec.pod_target_xcconfig = {
-        'KOTLIN_PROJECT_PATH' => ':shared:feature',
-        'PRODUCT_MODULE_NAME' => 'feature',
+        'KOTLIN_PROJECT_PATH' => ':shared:views',
+        'PRODUCT_MODULE_NAME' => 'views',
     }
                 
     spec.script_phases = [
         {
-            :name => 'Build feature',
+            :name => 'Build views',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT

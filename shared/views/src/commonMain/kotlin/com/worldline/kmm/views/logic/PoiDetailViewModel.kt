@@ -1,4 +1,4 @@
-package com.worldline.kmm.feature.logic
+package com.worldline.kmm.views.logic
 
 import com.worldline.kmm.core.Poi
 import com.worldline.kmm.data.repository.logic.Repository
