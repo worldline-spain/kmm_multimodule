@@ -38,4 +38,15 @@ Take a look at this diagram, just to have a picture of the project:
 - `Ktor`: https://ktor.io/docs/client.html
 - `Koin`: https://insert-koin.io/
 
-WIP
+## Setup
+
+- Configure Mapbox keys
+  - [Android](https://docs.mapbox.com/android/maps/guides/install/): 
+    Add MAPBOX_API_KEY to local.properties and MAPBOX_DOWNLOADS_TOKEN to USER_HOME/.gradle/gradle.properties
+  - [iOS](https://docs.mapbox.com/ios/maps/guides/install/). Add .netrc file:
+    ```bash
+      machine api.mapbox.com
+      login mapbox
+      password secret key
+    ```
+- Run ./gradlew build (Macos)
